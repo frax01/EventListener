@@ -1,4 +1,7 @@
+include Devise::Controllers::Helpers
+
 class UtentesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_utente, only: %i[ show edit update destroy ]
 
   # GET /utentes or /utentes.json

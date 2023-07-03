@@ -48,6 +48,7 @@ gem 'rspotify'
 gem 'figaro'
 gem 'cucumber'
 gem 'rack-cors', require: 'rack/cors'
+gem 'devise'
 
 group :test do
   gem 'cucumber-rails', require: false
