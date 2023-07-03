@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Radunos</h1>
+
+<div id="radunos">
+  <% @radunos.each do |raduno| %>
+    <%= render raduno %>
+    <p>
+      <%= link_to "Show this raduno", raduno %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New raduno", new_raduno_path %>
