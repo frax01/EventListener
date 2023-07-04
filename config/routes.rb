@@ -4,9 +4,7 @@ Rails.application.routes.draw do
   resources :utentes
   resources :pages
   root :to => redirect('/utentes#index')
-
-  #get '/auth/spotify/callback' => 'session#create'
-  #get '/auth/failure' => 'session#fail'
-  #get '/session/destroy' => 'session#destroy'
-
+  devise_scope :user do
+	get '/users/sign_out' => 'devise/sessions#destroy'
+  end
 end

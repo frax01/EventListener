@@ -36,3 +36,7 @@
 
 # Ignore application configuration
 /config/application.yml
+
+# Ignore vim editor and tool associated
+*.swp
+*tags
