@@ -13,18 +13,6 @@
   </head>
 
   <body>
-    <!--<div id="login" class="container" width="100%">
-      <div class="row bg-light border-bottom">
-        <div class="col-sm">
-          <%= form_tag('/auth/spotify', method: 'post') do %>
-            <button class="btn btn-primary text-center" type="submit">Sign In</button>
-          <% end %>    </div>
-        <div class="col-sm">
-          <a class="btn btn-danger  text-center" href="/session/destroy">Sign Out</a>
-        </div>
-      </div>
-    </div>-->
-
     <% if user_signed_in? %>
       Logged in as <%= current_user.email%> [<%= link_to 'Logout', destroy_user_session_path, :method => :delete%>]
     <% end %>
