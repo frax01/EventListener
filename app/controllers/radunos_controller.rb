@@ -23,9 +23,11 @@ class RadunosController < ApplicationController
   def create
     @raduno = Raduno.new(raduno_params)
 
+    #raduno_url(@raduno) ad esempio /radunos/1
+
     respond_to do |format|
       if @raduno.save
-        format.html { redirect_to raduno_url(@raduno), notice: "Raduno was successfully created." }
+        format.html { redirect_to '/homepage#index', notice: "Raduno was successfully created." }
         format.json { render :show, status: :created, location: @raduno }
       else
         format.html { render :new, status: :unprocessable_entity }

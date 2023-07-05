@@ -4,7 +4,7 @@ Given("che mi trovo sulla pagina di registrazione") do
     visit '/users/sign_up'
   end
 
-  And("inserisco il mio nome {string}") do |nome|
+  When("inserisco il mio nome {string}") do |nome|
     # Implementazione per inserire l'indirizzo email nel campo di input
     fill_in 'Nome', with: nome
   end
@@ -39,7 +39,7 @@ Given("che mi trovo sulla pagina di registrazione") do
     click_button nome_pulsante
   end
   
-  And("sono reindirizzato alla pagina degli utenti") do
+  Then("sono reindirizzato alla homepage") do
     # Implementazione per verificare il reindirizzamento alla pagina di accesso
-    expect(current_path).to eq('/utentes')
+    expect(current_path).to eq('/homepage')
   end

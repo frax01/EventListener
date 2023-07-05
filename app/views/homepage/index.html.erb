@@ -1,0 +1,55 @@
+<head>
+    <%= stylesheet_link_tag 'homepage' %>
+</head>
+
+<body>
+    <header>
+        <div class="nome-logout">
+            <div class="nome">
+                <h1>Ciao Francesco<%= @user_name %></h1>
+            </div>
+
+            <% if user_signed_in? %>
+                <div class="bottone" id="logout">
+                    <%= link_to 'Logout', destroy_user_session_path, :method => :delete%>
+                </div>
+            <% end %>
+        </div>
+
+        <div class="titolo">
+            <h1>EventListener</h1>
+        </div>
+
+        <div class="bottone" id="raduno">
+            <%= link_to 'Crea Raduno', new_raduno_path %>
+        </div>
+    </header>
+
+    <div class="grid-container" id="colonne">
+        <div class="grid-item">Fan di:</div>
+        <div class="grid-item">Raduni:</div>
+        <div class="grid-container" id="righe">
+            <div class="grid-item">Raduni a cui partecipi:</div>
+
+            <div class="grid-item">
+                <div class="intestazione">Raduni creati:</div>
+                <div class="raduno-box">
+                    <% if @ultimo_raduno %>
+                        <p>Descrizione: <%= @ultimo_raduno.descrizione %></p>
+                        <p>Data:  <%= @ultimo_raduno.data %></p>
+                        <p>Orario: <%= @ultimo_raduno.orario %></p>
+                        <p>Luogo: <%= @ultimo_raduno.luogo %></p>
+                        <div class="mod-elim">
+                            <button class="mod-elim-btn" onclick="location.href='<%= edit_raduno_path(@ultimo_raduno) %>'">Modifica</button>
+                            <button class="mod-elim-btn" onclick="location.href='<%= raduno_path(@ultimo_raduno) %>'" data-confirm="Sei sicuro di voler eliminare questo raduno?">Elimina</button>
+                        </div>
+                    <% else %>
+                        <p>Nessun raduno presente</p>
+                    <% end %>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
