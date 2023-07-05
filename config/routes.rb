@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   resources :pages
   root :to => redirect('/utentes#index')
   devise_scope :user do
-	get '/users/sign_out' => 'devise/sessions#destroy'
+	  get '/users/sign_out' => 'devise/sessions#destroy'
   end
 end
