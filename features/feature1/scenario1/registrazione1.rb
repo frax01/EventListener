@@ -3,6 +3,21 @@ Given("che mi trovo sulla pagina di registrazione") do
     # Implementazione per verificare che ti trovi sulla pagina di registrazione
     visit '/users/sign_up'
   end
+
+  And("inserisco il mio nome {string}") do |nome|
+    # Implementazione per inserire l'indirizzo email nel campo di input
+    fill_in 'Nome', with: nome
+  end
+
+  And("inserisco il mio cognome {string}") do |cognome|
+    # Implementazione per inserire l'indirizzo email nel campo di input
+    fill_in 'Cognome', with: cognome
+  end
+
+  And("inserisco la mia data di nascita {string}") do |data_di_nascita|
+    # Implementazione per inserire l'indirizzo email nel campo di input
+    fill_in 'Data di nascita', with: data_di_nascita
+  end
   
   And("inserisco il mio indirizzo email {string}") do |email|
     # Implementazione per inserire l'indirizzo email nel campo di input
