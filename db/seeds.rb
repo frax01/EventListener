@@ -10,7 +10,7 @@ more_utentes = [
     {:nome => 'Francesco', :cognome => 'Martignoni',
       :data_di_nascita => '04/04/2001', :mail => 'francescomartignoni1@gmail.com', :password => 'forzaroma'},
     {:nome => 'Simone', :cognome => 'Micucci',
-      :data_di_nascita => '10/03/2002', :mail => 'simonemicucci@gmail.com', :password => 'asroma1927'},
+      :data_di_nascita => '10/03/2000', :mail => 'simonemicucci00@gmail.com', :password => 'asroma1927'},
   ]
   
   more_utentes.each do |utente|

@@ -1,7 +1,8 @@
 class SessionsController < ApplicationController
     def create
-        #raise StandardError.new(ENV["omniauth.auth"])
-        spotify_user = RSpotify::User.new(request.env['omniauth.auth']) 
+		user_info = request.env[omniauth.auth]
+		raise user_info 
+		# Your own session managment should be placed here
     end
 
     def destroy
@@ -10,4 +11,8 @@ class SessionsController < ApplicationController
     def fail
         raise StandardError.new(ENV["omniauth.auth"])
     end
+	def new
+		render :new
+	end
+
 end
