@@ -2,6 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
+<<<<<<< HEAD
          :recoverable, :rememberable, :validatable,
          :omniauthable, :omniauth_providers => [:spotify]
      
@@ -35,4 +36,7 @@ class User < ApplicationRecord
       end
     end
   end
+=======
+
+>>>>>>> origin/Spoti-Oauth
 end

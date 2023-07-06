@@ -6,8 +6,6 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-RSpotify::authenticate("9ca4c2763c404fa6afdd461fcaec08cc", "cb63bdf4229e4f2e8175d38e6b2f097a")
-
 module EventListener
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -22,4 +20,16 @@ module EventListener
     # config.eager_load_paths << Rails.root.join("extras")
     # config/application.rb
   end
+end
+
+Rails.application.config.middleware.use OmniAuth::Builder do
+	provider :spotify, ENV['SPOTIFY_CLIENT_ID'], ENV['SPOTIFY_CLIENT_SECRET']
+=begin
+	# Support both GET and POST for callbacks
+	%w(get post).each do |method|
+		send(method, "/auth/:provider/callback") do
+			env['omniauth.auth'] # => OmniAuth::AuthHash
+		end
+	end
+=end
 end
