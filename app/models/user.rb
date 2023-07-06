@@ -4,8 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, :omniauth_providers => [:spotify]
-  
-  attr_accessor :nome, :cognome, :data_di_nascita    
+     
   
   def self.sign_up_params
     params.require(:user).permit(:nome, :cognome, :data_di_nascita, :email, :password, :password_confirmation)

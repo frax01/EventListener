@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_05_172455) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_06_080816) do
   create_table "radunos", force: :cascade do |t|
     t.string "nome_darte_organizzatore"
     t.string "descrizione"

@@ -4,8 +4,14 @@ Given("mi trovo sulla pagina di registrazione") do
   end
   
   When("esiste già un utente con l'indirizzo email {string}") do |email|
-    # Create a user with the provided email address in the database
-    User.create(email: email, password: 'password')
+    # Create a user with the provided details in the database
+    User.create(
+      nome: 'Nome Utente',
+      cognome: 'Cognome Utente',
+      data_di_nascita: Date.parse('2000-01-01'),
+      email: email,
+      password: 'Patatine1!'
+    )
   end
 
   And("inserisco nome {string}") do |nome|
