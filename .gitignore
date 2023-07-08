@@ -40,3 +40,8 @@
 # Ignore vim editor and tool associated
 *.swp
 *tags
+
+# Ignore private spotify id and spotify secret
+local_env.yml
+config/local_env*
+config/local_env.yml
