@@ -3,24 +3,42 @@ Given("mi trovo sulla pagina di registrazione") do
     visit new_user_registration_path
   end
   
-  Given("esiste già un utente con l'indirizzo email {string}") do |email|
-    # Create a user with the provided email address in the database
-    User.create(email: email, password: 'password')
+  When("esiste già un utente con l'indirizzo email {string}") do |email|
+    # Create a user with the provided details in the database
+    User.create(
+      nome: 'Nome Utente',
+      cognome: 'Cognome Utente',
+      data_di_nascita: Date.parse('2000-01-01'),
+      email: email,
+      password: 'Patatine1!'
+    )
+  end
+
+  And("inserisco nome {string}") do |nome|
+    fill_in 'Nome', with: nome
+  end
+
+  And("inserisco cognome {string}") do |cognome|
+    fill_in 'Cognome', with: cognome
+  end
+
+  And("inserisco data di nascita {string}") do |data_di_nascita|
+    fill_in 'Data di nascita', with: data_di_nascita
   end
   
-  When("inserisco l'indirizzo email {string}") do |email|
+  And("inserisco l'indirizzo email {string}") do |email|
     fill_in 'Email', with: email
   end
   
-  When("inserisco una password che è sicura {string}") do |password|
+  And("inserisco una password che è sicura {string}") do |password|
     fill_in 'Password', with: password
   end
   
-  When("confermo la password che è {string}") do |password_confirmation|
+  And("confermo la password che è {string}") do |password_confirmation|
     fill_in 'Password confirmation', with: password_confirmation
   end
   
-  When("clicco sul bottone {string}") do |button_text|
+  And("clicco sul bottone {string}") do |button_text|
     click_button button_text
   end
   

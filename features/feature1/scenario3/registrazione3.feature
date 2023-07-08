@@ -3,10 +3,13 @@ Feature:  Registrazione Event Listener:
 
                     Scenario: Registrazione utente con email già esistente
                         Given mi trovo sulla pagina di registrazione
-                        And esiste già un utente con l'indirizzo email "francescomartignoni1@gmail.com"
-                        When inserisco l'indirizzo email "francescomartignoni1@gmail.com"
-                        And inserisco una password che è sicura "patatine1"
-                        And confermo la password che è "patatine1"
+                        When esiste già un utente con l'indirizzo email "francescomartignoni1@gmail.com"
+                        And inserisco nome "Francesco"
+                        And inserisco cognome "Martignoni"
+                        And inserisco data di nascita "04/04/2001"
+                        And inserisco l'indirizzo email "francescomartignoni1@gmail.com"
+                        And inserisco una password che è sicura "Patatine1!"
+                        And confermo la password che è "Patatine1!"
                         And clicco sul bottone "Sign up"
                         Then visualizzo un messaggio di errore sull'indirizzo email
-                        And rimango li sulla pagina di registrazione
+                        Then rimango li sulla pagina di registrazione

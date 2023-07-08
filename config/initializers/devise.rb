@@ -273,6 +273,9 @@ Devise.setup do |config|
   # up on your models and hooks.
   config.omniauth :spotify, ENV["SPOTIFY_ID"], ENV["SPOTIFY_SECRET"] , scope: 'user-top-read, user-read-private'
 
+  # request user private name, email and image profile
+  # request user top 50 artist in long-term (like ages, not 6 month)
+  
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
@@ -294,7 +297,7 @@ Devise.setup do |config|
   #
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
-  # config.omniauth_path_prefix = '/my_engine/users/auth'
+  config.omniauth_path_prefix = '/users/auth/spotify/callback'
 
   # ==> Hotwire/Turbo configuration
   # When using Devise with Hotwire/Turbo, the http status for error responses

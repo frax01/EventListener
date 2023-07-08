@@ -12,33 +12,23 @@
   <% end %>
 
   <div>
-    <%= form.label :idr, style: "display: block" %>
-    <%= form.number_field :idr %>
-  </div>
-
-  <div>
-    <%= form.label :nome_darte_organizzatore, style: "display: block" %>
-    <%= form.text_field :nome_darte_organizzatore %>
-  </div>
-
-  <div>
     <%= form.label :descrizione, style: "display: block" %>
-    <%= form.text_field :descrizione %>
+    <%= form.text_field :descrizione, required: true %>
   </div>
 
   <div>
     <%= form.label :data, style: "display: block" %>
-    <%= form.date_field :data %>
+    <%= form.date_field :data, required: true %>
   </div>
 
   <div>
     <%= form.label :orario, style: "display: block" %>
-    <%= form.time_field :orario %>
+    <%= form.time_field :orario, required: true %>
   </div>
 
   <div>
     <%= form.label :luogo, style: "display: block" %>
-    <%= form.text_field :luogo %>
+    <%= form.text_field :luogo, required: true %>
   </div>
 
   <div>

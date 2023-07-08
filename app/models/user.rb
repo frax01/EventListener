@@ -4,6 +4,22 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, :omniauth_providers => [:spotify]
+     
+  
+  def self.sign_up_params
+    params.require(:user).permit(:nome, :cognome, :data_di_nascita, :email, :password, :password_confirmation)
+  end
+
+  validate :password_complexity
+  private
+
+  def password_complexity
+    return if password.blank?
+
+    unless password.match?(/(?=.*[A-Z])(?=.*\d)(?=.*[[:^alnum:]])/)
+      errors.add(:password, "deve contenere almeno una lettera maiuscola, un numero e un carattere speciale")
+    end
+  end
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

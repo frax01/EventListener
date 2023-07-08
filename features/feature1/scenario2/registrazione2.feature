@@ -3,8 +3,11 @@ Feature:  Registrazione Event Listener:
 
                     Scenario: Registrazione utente con password non valida
                         Given sono sulla pagina di registrazione
-                        When inserisco la mia email "francescomartignoni1@gmail.com"
+                        When inserisco il nome "Francesco"
+                        And inserisco il cognome "Martignoni"
+                        And inserisco la data di nascita "04/04/2001"
+                        And inserisco la mia email "francescomartignoni1@gmail.com"
                         And metto una password non sicura "patat"
                         And confermo questa password "patat"
                         And clicco su "Sign up"
-                        And rimango nella pagina di registrazione
+                        Then rimango nella pagina di registrazione

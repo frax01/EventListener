@@ -3,11 +3,11 @@ Feature:  Registrazione Event Listener:
 
                     Scenario: Registrazione utente con successo
                         Given che mi trovo sulla pagina di registrazione
-                        And inserisco il mio nome "Francesco"
+                        When inserisco il mio nome "Francesco"
                         And inserisco il mio cognome "Martignoni"
                         And inserisco la mia data di nascita "04/04/2001"
                         And inserisco il mio indirizzo email "francescomartignoni1@gmail.com"
-                        And inserisco una password sicura "patatine1"
-                        And confermo la password "patatine1"
+                        And inserisco una password sicura "Patatine1!"
+                        And confermo la password "Patatine1!"
                         And clicco sul pulsante "Sign up"
-                        And sono reindirizzato alla pagina degli utenti
+                        Then sono reindirizzato alla homepage
