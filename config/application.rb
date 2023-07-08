@@ -6,12 +6,20 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-RSpotify::authenticate("9ca4c2763c404fa6afdd461fcaec08cc", "cb63bdf4229e4f2e8175d38e6b2f097a")
+# RSpotify::authenticate(ENV[SPOTIFY_ID], ENV[SPOTIFY_SECRET])
 
 module EventListener
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+
+	# based on this article: https://itnext.io/environment-variables-in-ruby-on-rails-17e4934cfd71
+	config.before_configuration do
+		env_file = File.join(Rails.root, 'config', 'local_env.yml')
+		YAML.load(File.open(env_file)).each do |key, value|
+			ENV[key.to_s] = value
+		end if File.exists?(env_file)
+	end
 
     # Configuration for the application, engines, and railties goes here.
     #
