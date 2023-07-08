@@ -14,22 +14,22 @@
   <div class="centro">
     <div class="field">
       <%= f.label :nome %><br />
-      <%= f.text_field :nome, autofocus: true, autocomplete: "nome", maxlength: 20 %>
+      <%= f.text_field :nome, autofocus: true, autocomplete: "nome", maxlength: 20, required: true %>
     </div>
 
     <div class="field">
       <%= f.label :cognome %><br />
-      <%= f.text_field :cognome, autofocus: true, autocomplete: "cognome", maxlength: 20 %>
+      <%= f.text_field :cognome, autofocus: true, autocomplete: "cognome", maxlength: 20, required: true %>
     </div>
 
     <div class="field">
       <%= f.label :data_di_nascita %><br />
-      <%= f.date_field :data_di_nascita, autofocus: true, autocomplete: "data_di_nascita" %>
+      <%= f.date_field :data_di_nascita, autofocus: true, autocomplete: "data_di_nascita", required: true %>
     </div>
 
     <div class="field">
       <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true %>
     </div>
 
     <div class="field">
@@ -37,12 +37,12 @@
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %>cm,1m,1cs,1n)</em>
       <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
+      <%= f.password_field :password, autocomplete: "new-password", required: true %>
     </div>
 
     <div class="field">
       <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true %>
     </div>
 
     <div class="actions">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_06_080816) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_07_174127) do
   create_table "radunos", force: :cascade do |t|
     t.string "nome_darte_organizzatore"
     t.string "descrizione"
@@ -19,7 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_06_080816) do
     t.string "luogo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "idr"
+    t.string "email"
   end
 
   create_table "users", force: :cascade do |t|
@@ -35,6 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_06_080816) do
     t.string "nome"
     t.string "cognome"
     t.date "data_di_nascita"
+    t.string "status"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

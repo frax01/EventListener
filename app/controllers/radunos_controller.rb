@@ -21,12 +21,14 @@ class RadunosController < ApplicationController
 
   # POST /radunos or /radunos.json
   def create
-    @raduno = Raduno.new(raduno_params)
+    @raduno=Raduno.new(raduno_params)
+    @raduno.email=current_user.email
 
     #raduno_url(@raduno) ad esempio /radunos/1
 
     respond_to do |format|
       if @raduno.save
+        puts "ID del raduno: #{@raduno.id}"
         format.html { redirect_to '/homepage#index', notice: "Raduno was successfully created." }
         format.json { render :show, status: :created, location: @raduno }
       else
@@ -40,7 +42,7 @@ class RadunosController < ApplicationController
   def update
     respond_to do |format|
       if @raduno.update(raduno_params)
-        format.html { redirect_to raduno_url(@raduno), notice: "Raduno was successfully updated." }
+        format.html { redirect_to '/homepage#index', notice: "Raduno was successfully updated." }
         format.json { render :show, status: :ok, location: @raduno }
       else
         format.html { render :edit, status: :unprocessable_entity }

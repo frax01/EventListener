@@ -7,8 +7,10 @@ Feature: Password dimenticata
     And vengo reindirizzato alla pagina di reset
     And inserisco l'email "francescomartignoni1@gmail.com"
     And clicco su quel pulsante "Send me reset password instructions"
-    And clicco e vengo reindirizzato al link nella email di reset password
-    And inserisco la nuova password corretta "Patatine12!"
-    And confermo la nuova password corretta "Patatine12!"
+    And vengo mandato sulla pagina di cambio password
+    And clicco sul link del terminale #come faccio???
+    And vengo rimandato alla pagina di reset
+    And inserisco la nuova password corretta "Patatine17!"
+    And confermo l'inserimento della nuova password corretta "Patatine17!"
     And clicco "Change my password"
     Then sono sulla homepage

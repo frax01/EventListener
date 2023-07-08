@@ -271,14 +271,16 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-<<<<<<< HEAD
-  config.omniauth :spotify, '9ca4c2763c404fa6afdd461fcaec08cc', 'cb63bdf4229e4f2e8175d38e6b2f097a' #, scope: 'user,public_repo'
-=======
+
+  config.omniauth :spotify, '9ca4c2763c404fa6afdd461fcaec08cc', 'cb63bdf4229e4f2e8175d38e6b2f097a', scope: 'user-read-email playlist-modify-public'
+
   # request user private name, email and image profile
   # request user top 50 artist in long-term (like ages, not 6 month)
-  config.omniauth :spotify, '3e637d70c750417daf5c2e758bde75b5', '1276f61dd61f49618d4fc9f0bf211a05',
-  					scope: 'user-read-private, user-top-read'
->>>>>>> origin/Spoti-Oauth
+  
+  
+  #config.omniauth :spotify, '3e637d70c750417daf5c2e758bde75b5', '1276f61dd61f49618d4fc9f0bf211a05',
+  					#scope: 'user-read-private, user-top-read'
+
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

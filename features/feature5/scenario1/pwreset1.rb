@@ -20,18 +20,26 @@ Given("sono sulla pagina di login") do
     click_button button_text
   end
   
-  And("clicco e vengo reindirizzato al link nella email di reset password") do
+  And("vengo mandato sulla pagina di cambio password") do
+    expect(current_path).to eq(user_password_path)
+    #log_output = `tail -n 20 log/development.log`
+    #reset_password_link = log_output.match(/<a href="([^"]+)">Change my password<\/a>/)&.captures&.first
+    #visit reset_password_link
+  end
 
-    log_output = `tail -n 20 log/development.log`
-    reset_password_link = log_output.match(/<a href="([^"]+)">Change my password<\/a>/)&.captures&.first
-    visit reset_password_link
+  And("clicco sul link del terminale") do
+    click_link ####cosa metto????
+  end
+
+  And("vengo rimandato alla pagina di reset") do
+    expect(current_path).to eq(edit_user_password_path(@resource, reset_password_token: @token))
   end
   
   And("inserisco la nuova password corretta {string}") do |password|
     fill_in 'New password', with: password
   end
   
-  And("confermo la nuova password corretta {string}") do |password_confirmation|
+  And("confermo l'inserimento della nuova password corretta {string}") do |password_confirmation|
     fill_in 'Confirm new password', with: password_confirmation
   end
   
@@ -40,5 +48,5 @@ Given("sono sulla pagina di login") do
   end
   
   Then("sono sulla homepage") do
-    expect(current_path).to eq('/users/password')
+    expect(current_path).to eq('/homepage')
   end

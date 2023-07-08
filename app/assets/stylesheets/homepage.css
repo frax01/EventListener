@@ -1,11 +1,12 @@
-html, body { height: 100%; width: 100%; margin: 0px; min-width: 624px;}
-body { background-color: white; overflow-y: hidden; overflow-x: hidden; }
+html, body { height: 100%; width: 100%; margin: 0px;}
+body { background-color: white; overflow-y: hidden; overflow-x: hidden; margin: 0px; }
 
 header {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
+    height: 80px;
 }
 
 .nome-logout {
@@ -28,7 +29,7 @@ header {
     background-color: #f2f2f2;
     color: #333;
     border: 1px solid #ccc;
-    height: 100%;
+    height: 50%;
     width: 25%;
     font-size: 22px;
 }
@@ -39,7 +40,7 @@ header {
     background-color: #f2f2f2;
     color: #333;
     border: 1px solid #ccc;
-    height: 100%;
+    height: 50%;
     width: 11%;
     margin-right: 50px;
     font-size: 22px;
@@ -51,19 +52,10 @@ header {
 
 .grid-container#colonne {
     display: grid;
-    grid-template-columns: 20% 40% 40%;
-    grid-gap: 10px;
-    height: 100%;
+    grid-template-columns: 33% 34% 33%;
+    height: calc(100vh - 80px);
+    width: 100%;
 }
-
-.grid-container#righe {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 40% 60%;
-    grid-gap: 10px;
-    height: 100vh;
-}
-
 .grid-item {
     display: flex;
     justify-content: flex-start;
@@ -72,23 +64,42 @@ header {
     overflow-y: scroll;
     flex-direction: column;
     align-items: center;
+    height: calc(100vh - 80px);
+    background-color: rgb(1, 56, 1);
+}
+
+.grid-container#righe {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: calc(100vh - 80px);
+}
+.grid-item#elem1 {
+    height: calc((100vh - 80px) / 2);
+}
+.grid-item#elem2 {
+    height: calc((100vh - 80px) / 2);
+    padding: 0px;
 }
 
 .intestazione {
     margin-bottom: 10px;
     font-size: 25px;
     font-weight: bold;
+    color: white;
 }
 
-.raduno-box {
+.box {
     z-index: 2;
     border-radius: 5px;
     border: solid 1px;
     padding: 20px;
     font-size: 20px;
+    margin-bottom: 20px;
+    background-color: white;
 }
 
-.raduno-box p {
+.box p {
     margin-bottom: 0px;
 }
 
@@ -96,13 +107,18 @@ header {
     font-weight: bold;
 }
 
-.mod-elim {
+.funzioni {
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
     margin-top: 15px;
 }
 
-.mod-elim-btn:hover {
+.funzioni-btn#crea {
+    margin-right: 160px;
+    font-size: 20px;
+}
+
+.funzioni-btn:hover {
     background-color: rgb(105, 104, 104);
 }

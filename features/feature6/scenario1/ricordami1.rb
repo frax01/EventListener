@@ -19,15 +19,11 @@ Given("sono sulla pagina di accesso") do
     click_button button_text
   end
   
-  And("chiudo l'applicazione") do
-    @applicazione_chiusa = true
-  end
-  
   And("riapro l'applicazione") do
-    @applicazione_chiusa = false
+    visit root_path
   end
 
-  Then("mi aspetto di essere sulla homepage") do
-    expect(current_path).to eq('/users/sign_in')
+  Then("mi aspetto di essere già loggato e sulla homepage") do
+    expect(current_path).to eq('/homepage')
   end
   
