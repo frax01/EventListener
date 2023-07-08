@@ -17,7 +17,7 @@ Given("sono autenticato come Artista") do
   
   When("clicco in {string}") do |button_text|
     expect(current_path).to eq('/homepage')
-    click_button button_text
+    click_link button_text
   end
   
   Then("mi aspetto di essere sulla pagina di creazione di un nuovo raduno") do

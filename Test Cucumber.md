@@ -135,12 +135,12 @@
                 Un Fan vede solo i Raduni degli Artisti di cui è Fan, a cui può accedere e partecipare
 
 ### 3 - CREAZIONE RADUNO:
-### 10 - SCENARIO 1: FAIL
+### 10 - SCENARIO 1: OK
 *Feature*:  Crea Raduno da Artista:  
                 L'Artista può creare eventi di tipo Raduno. Non ci sono limiti di posti o costi di accesso. Possono accedervi solo i Fan di quell'Artista. 
                 Quando si clicca sulla sezione apposita per creare il Raduno si apre un form con le informazioni da inserire
 
-                    #1 FAIL
+                    #1 OK
                     Scenario: Creazione di un nuovo raduno
                         Given sono autenticato come Artista
                         When clicco su "Crea Raduno"
@@ -169,9 +169,30 @@
                 L'organizzatore del Raduno riceve una mail settimanalmente con le informazioni di quanti partecipanti ci sono al Raduno
 
 ### 5 - MODIFICA IMPOSTAZIONI RADUNO:
-### 16
+### 16 -SCENARIO 1: OK
 *Feature*:  Modifica organizzazione Raduno:  
                 L'organizzatore del Raduno può modificare quest'ultimo cliccando su di un apposito pulsante del Raduno che viene visualizzato lateralmente sulla homepage. Questo ci reindirizza allo stesso form di compilazione di quando si deve creare il Raduno ma con i campi precompilati. Una volta fatto il cambiamento si ritorna sulla homepage
+
+                #1 OK
+                Feature: Modifica organizzazione Raduno
+                    Scenario: Modifica un raduno esistente
+                        Given sono un utente loggato sulla homepage
+                        And vado su "Crea Raduno"
+                        And creo un raduno cliccando su "Create Raduno"
+                        When clicco sul pulsante "Modifica" per il raduno con descrizione "video album"
+                        Then vengo reindirizzato alla pagina di modifica del raduno
+                        Then vedo i campi del raduno precompilati con i seguenti dettagli
+                        | descrizione   | data       | orario  | luogo          |
+                        | video album   | 2023-07-10 | 21:00:00.000   | Piazza di Spagna |
+                        When compilo i nuovi dettagli del raduno:
+                        | descrizione   | data       | orario  | luogo          |
+                        | video album   | 2023-07-10 | 23:30:00:00   | Piazza di Spagna |
+                        And spingo "Update Raduno"
+                        Then vengo reindirizzato alla homepage
+                        Then vedo il raduno modificato con i dettagli aggiornati:
+                        | descrizione   | data       | orario  | luogo          |
+                        | video album   | 2023-07-10 | 23:30   | Piazza di Spagna |
+
 ### 17
 *Feature*:  Notifica di modifica organizzazione Raduno:  
                 L'applicazione non appena un Raduno viene modificato manda un messaggio(mail broadcast) a tutti gli iscritti con i cambiamenti apportati. La mail viene mandata solo se c'è almeno un cambiamento nelle informazioni scritte

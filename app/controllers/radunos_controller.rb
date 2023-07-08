@@ -28,7 +28,6 @@ class RadunosController < ApplicationController
 
     respond_to do |format|
       if @raduno.save
-        puts "ID del raduno: #{@raduno.id}"
         format.html { redirect_to '/homepage#index', notice: "Raduno was successfully created." }
         format.json { render :show, status: :created, location: @raduno }
       else

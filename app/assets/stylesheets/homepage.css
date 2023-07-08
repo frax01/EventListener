@@ -9,6 +9,46 @@ header {
     height: 80px;
 }
 
+.titolo {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.grid-containerh {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    height: 100%;
+    justify-items: center;
+  }
+
+.grid-itemh {
+    display: flex;
+    align-items: center;
+}
+
+.funzioni {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+.funzioni-btn {
+    font-size: 20px;
+    border: solid 1px #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    color: #333;
+    text-decoration: none;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.funzioni-btn:not([disabled]):hover {
+    background-color: rgb(209, 208, 208);
+}
+
 .nome-logout {
     display: flex;
     justify-content: space-between;
@@ -21,30 +61,6 @@ header {
 .titolo {
     margin: 10px;
     display: inline-block;
-}
-
-.bottone#logout {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f2f2f2;
-    color: #333;
-    border: 1px solid #ccc;
-    height: 50%;
-    width: 25%;
-    font-size: 22px;
-}
-
-.bottone#raduno {
-    display: flex;
-    justify-content: center;
-    background-color: #f2f2f2;
-    color: #333;
-    border: 1px solid #ccc;
-    height: 50%;
-    width: 11%;
-    margin-right: 50px;
-    font-size: 22px;
 }
 
 .bottone:hover {
@@ -94,10 +110,16 @@ header {
     z-index: 2;
     border-radius: 5px;
     border: solid 1px;
-    padding: 20px;
+    padding: 15px;
     font-size: 20px;
     margin-bottom: 20px;
     background-color: white;
+    width: 75%;
+}
+
+.box#fan {
+    display: flex;
+    justify-content: center;
 }
 
 .box p {
@@ -112,22 +134,3 @@ header {
     font-weight: bold;
 }
 
-.funzioni {
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: row;
-    margin-top: 15px;
-}
-
-.funzioni-btn {
-    font-size: 20px;
-}
-
-.funzioni-btn#crea {
-    margin-right: 160px;
-    font-size: 20px;
-}
-
-.funzioni-btn:hover {
-    background-color: rgb(105, 104, 104);
-}

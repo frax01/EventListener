@@ -81,27 +81,24 @@
 <body>
     <header>
 
-        <div class="nome-logout">
-            <div class="nome">
+        <div class="grid-containerh">
+            <div class="grid-itemh">
                 <h1>Ciao <%= @user.nome %></h1>
             </div>
-
-            <% if user_signed_in? %>
-                <div class="bottone" id="logout">
-                    <%= link_to 'Logout', destroy_user_session_path, :method => :delete%>
-                </div>
-            <% end %>
+            <div class="grid-itemh">
+                <div class="titolo">EventListener</div>
+            </div>
+            <div class="grid-itemh" id="num3">
+                <% if current_user.status=='Artista' %>
+                    <%= link_to 'Crea Raduno', new_raduno_path, class: 'funzioni-btn' %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <% else %>
+                    <%= link_to 'Crea Raduno', new_raduno_path, class: 'funzioni-btn', disabled: true %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <% end %>
+                <% if user_signed_in? %>
+                    <%= link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'funzioni-btn' %>
+                <% end %>
+            </div>
         </div>
-
-        <div class="titolo">
-            <h1>EventListener</h1>
-        </div>
-
-        <% if current_user.status=='Artista' %>
-            <button class="funzioni-btn" id="crea" onclick="location.href='<%= new_raduno_path %>'">Crea Raduno</button>
-        <% else %>
-            <button disabled>Crea Raduno</button>
-        <% end %>
 
     </header>
 
@@ -110,7 +107,7 @@
             <div class="intestazione">Fan di:</div>
                 <% if @fan.present? %>
                     <% @fan.each do |fan| %>
-                        <div class="box">
+                        <div class="box" id="fan">
                             <p><%= fan %></p>
                         </div>
                     <% end %>
@@ -147,28 +144,26 @@
             </div>
             <div class="grid-item" id="elem2">
                 <div class="intestazione">Raduni creati:</div>
-                    <!--implementare la verifiche di utente=artista-->
-                    <% if Raduno.any? %>
-                        <% Raduno.all.each do |raduno| %>
-                            <% if raduno.email == current_user.email %>
-                                <div class="box" id="raduni">
-                                    <p>Descrizione: <%= raduno.descrizione %></p>
-                                    <p>Data: <%= raduno.data %></p>
-                                    <p>Orario: <%= raduno.orario.strftime("%H:%M") %></p>
-                                    <p>Luogo: <%= raduno.luogo %></p>
-                                    <div class="funzioni">
-                                        <button class="funzioni-btn" onclick="location.href='<%= edit_raduno_path(raduno) %>'">Modifica</button>
-                                        <button class="funzioni-btn" onclick="deleteRaduno(<%= raduno.id %>)">Elimina</button>
-                                    </div>
+                <!--implementare la verifiche di utente=artista-->
+                <% if Raduno.any? %>
+                    <% Raduno.all.each do |raduno| %>
+                        <% if raduno.email == current_user.email %>
+                            <div class="box" id="raduni">
+                                <p>Descrizione: <%= raduno.descrizione %></p>
+                                <p>Data: <%= raduno.data %></p>
+                                <p>Orario: <%= raduno.orario.strftime("%H:%M") %></p>
+                                <p>Luogo: <%= raduno.luogo %></p>
+                                <div class="funzioni">
+                                    <%= link_to 'Modifica', edit_raduno_path(raduno), class: 'funzioni-btn' %>
+                                    <button class="funzioni-btn" onclick="deleteRaduno(<%= raduno.id %>)">Elimina</button> 
                                 </div>
-                            <% end %>
+                            </div>
                         <% end %>
-                    <% else %>
-                        <p>Nessun raduno presente</p>
                     <% end %>
-                </div>
-
+                <% else %>
+                    <p>Nessun raduno presente</p>
+                <% end %>
+            </div>
         </div>
     </div>
-
 </body>
