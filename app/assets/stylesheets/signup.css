@@ -9,9 +9,11 @@ body {
     margin-top: -10px;
 }
 .t {
+    margin-top: 10px;
     font-size: 50px;
     font-weight: bold;
     text-decoration: underline;
+    margin-bottom: 0px;
 }
 .centro {
     display: flex;

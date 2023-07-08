@@ -122,7 +122,7 @@
             <div class="intestazione">Raduni:</div>
             <% if Raduno.any? %>
                 <% Raduno.all.each do |raduno| %>
-                    <div class="box">
+                    <div class="box" id="raduni">
                         <p>Artista: <%= raduno.nome_darte_organizzatore %></p>
                         <p>Descrizione: <%= raduno.descrizione %></p>
                         <p>Data: <%= raduno.data %></p>
@@ -130,7 +130,7 @@
                         <p>Luogo: <%= raduno.luogo %></p>
                         <div class="funzioni">
                             <% if raduno.email == current_user.email %>
-                                <button disabled>Partecipa</button>
+                                <button class="funzioni-btn" disabled>Partecipa</button>
                             <% else %>
                                 <button class="funzioni-btn" onclick="partecipaRaduno()">Partecipa</button>
                             <% end %>
@@ -151,7 +151,7 @@
                     <% if Raduno.any? %>
                         <% Raduno.all.each do |raduno| %>
                             <% if raduno.email == current_user.email %>
-                                <div class="box">
+                                <div class="box" id="raduni">
                                     <p>Descrizione: <%= raduno.descrizione %></p>
                                     <p>Data: <%= raduno.data %></p>
                                     <p>Orario: <%= raduno.orario.strftime("%H:%M") %></p>

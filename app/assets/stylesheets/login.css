@@ -12,6 +12,7 @@ body {
     font-size: 50px;
     font-weight: bold;
     text-decoration: underline;
+    margin: 0px;
 }
 .centro {
     display: flex;

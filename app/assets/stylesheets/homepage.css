@@ -61,7 +61,6 @@ header {
     display: flex;
     justify-content: flex-start;
     background-color: #f2f2f2;
-    padding: 20px;
     overflow-y: scroll;
     flex-direction: column;
     align-items: center;
@@ -84,6 +83,7 @@ header {
 }
 
 .intestazione {
+    margin-top: 10px;
     margin-bottom: 10px;
     font-size: 25px;
     font-weight: bold;
@@ -101,7 +101,11 @@ header {
 }
 
 .box p {
-    margin-bottom: 0px;
+    margin: 0px;
+}
+
+.box#raduni p {
+    margin-bottom: 10px;
 }
 
 .font {
@@ -113,6 +117,10 @@ header {
     justify-content: space-evenly;
     flex-direction: row;
     margin-top: 15px;
+}
+
+.funzioni-btn {
+    font-size: 20px;
 }
 
 .funzioni-btn#crea {
