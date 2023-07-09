@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
+	  # registrations: 'users/registrations'
+	  # sessions: 'users/sessions'
 	  omniauth_callbacks: 'users/omniauth_callbacks'
   }
   resources :radunos
   root :to => redirect('/homepage')
   devise_scope :user do
-	  get '/users/sign_out' => 'devise/sessions#destroy'
+	  get '/users/sign_out', :to => 'devise/sessions#destroy'#, :as => :destroy_user_session
   end
 
   get '/homepage', to: 'homepage#index'

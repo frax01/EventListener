@@ -271,7 +271,8 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :spotify, ENV["SPOTIFY_ID"], ENV["SPOTIFY_SECRET"] , scope: 'user-top-read, user-read-private'
+  config.omniauth :spotify, ENV["SPOTIFY_ID"], ENV["SPOTIFY_SECRET"] ,
+  scope: 'user-top-read, user-read-private'
 
   # request user private name, email and image profile
   # request user top 50 artist in long-term (like ages, not 6 month)

@@ -3,15 +3,19 @@
 <p class="t">EventListener</p>
 <h1>Sign up</h1>
 
+<%#<div class="field">%>
+	<%= label :spotify, "Collega il tuo account Spotify" %><br />
+	<%# link_to image_tag("Spotify_Logo_RGB_Green.png",size: "118x35"), user_spotify_omniauth_authorize_path, method: :post%>
+	<%= button_to image_tag("Spotify_Logo_RGB_Green.png",size: "118x35"), user_spotify_omniauth_authorize_path, data: { turbo: false }%>
+	<br /><br />
+<%#</div>%>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-  <div class="field">
-    <%= f.label :spotify, "Collega il tuo account Spotify" %><br />
-    <%# link_to image_tag("Spotify_Logo_RGB_Green.png",size: "118x35"), user_omniauth_authorize_path(:spotify)%>
-	<br /><br />
-  </div>
+	<%= csrf_meta_tags %>
 
   <div class="centro">
+
+
     <div class="field">
       <%= f.label :nome %><br />
       <%= f.text_field :nome, autofocus: true, autocomplete: "nome", maxlength: 20, required: true %>
