@@ -42,22 +42,6 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
-# gem 'rails-ujs'
-gem 'omniauth-spotify'
-gem 'omniauth-rails_csrf_protection'
-# gem 'rspotify'
-gem 'figaro'
-gem 'cucumber'
-gem 'rack-cors', require: 'rack/cors'
-gem 'devise'
-gem 'rspec-rails'
-
-group :test do
-  gem 'cucumber-rails', require: false
-  # database_cleaner is not mandatory, but highly recommended
-  gem 'database_cleaner'
-end
-
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -86,3 +70,8 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "devise", "~> 4.9"
+gem "figaro"
+gem "omniauth-spotify"
+gem "omniauth-rails_csrf_protection"

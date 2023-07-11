@@ -1,21 +1,23 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-	  # registrations: 'users/registrations'
-	  # sessions: 'users/sessions'
-	  omniauth_callbacks: 'users/omniauth_callbacks'
+	registrations: "user/registrations",
+	sessions: "user/sessions",
+	omniauth_callbacks: "users/omniauth_callbacks"
   }
-  resources :radunos
-  root :to => redirect('/homepage')
+
   devise_scope :user do
-	  get '/users/sign_out', :to => 'devise/sessions#destroy'#, :as => :destroy_user_session
+    get "/users/sign_in", to: "devise/sessions#new"
+  end
+  devise_scope :user do
+    get "/users/sign_out", :to => "devise/sessions#destroy"
   end
 
-  get '/homepage', to: 'homepage#index'
-  get '/radunos/new', to: 'radunos#new'
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :users
 
+  root to: "home#index"
+  # root to: redirect("/user/sign_in")
 
-  get '/auth/:provider/callback' => 'session#create'
-  get '/auth/failure' => 'session#fail'
-  get '/session/destroy' => 'session#destroy'
-
+  # Defines the root path route ("/")
+  # root "articles#index"
 end

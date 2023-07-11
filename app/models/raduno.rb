@@ -1,2 +1,0 @@
-class Raduno < ApplicationRecord
-end

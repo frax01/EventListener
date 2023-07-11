@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '9f98179538282cccb12b08b2cd14c4c2e415bacaecf378b64eff3f251bfda90307bfcfbd46554cf6ec29ebbe8de8fe8569a31df24650a120a124925d66f3410b'
+  # config.secret_key = '990cb13a3701cad634fa101928f259f90d42ca7a3d620abbff58198e049813f8d02c6a67788063961e57bcd83611b66881c1645efbed4f938c390aa6c73a2310'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -24,7 +24,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'francescomartignoni1@gmail.com'
+  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -126,7 +126,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = 'add88e4f840346112071b34f8992b2a5a387682677dea6125e07b0abaddb366811ec6c5e229b3d7d433543a84030060283da9d309d2a4aca6df85b1d05e637b6'
+  # config.pepper = 'f2302290a7489301de145ac82ff48621d851498e55b15b21e66091f17a21c78e69a28590ffcca17af25ebdd2d4d88fcdcac6597776b07a44413d4c6da79d042a'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -178,7 +178,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :validatable
   # Range for password length.
-  config.password_length = 8..128
+  config.password_length = 6..128
 
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
@@ -244,7 +244,7 @@ Devise.setup do |config|
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "users/sessions/new". It's turned off by default because it's slower if you
   # are using only default views.
-  config.scoped_views = false
+  # config.scoped_views = false
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
@@ -271,12 +271,8 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :spotify, ENV["SPOTIFY_ID"], ENV["SPOTIFY_SECRET"] ,
-  scope: 'user-top-read, user-read-private'
+  config.omniauth :spotify, ENV["SPOTIFY_ID"], ENV["SPOTIFY_SECRET"], scope: "user-read-private,user-top-read"
 
-  # request user private name, email and image profile
-  # request user top 50 artist in long-term (like ages, not 6 month)
-  
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
@@ -298,7 +294,7 @@ Devise.setup do |config|
   #
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
-  config.omniauth_path_prefix = '/users/auth/spotify/callback'
+  # config.omniauth_path_prefix = '/my_engine/users/auth'
 
   # ==> Hotwire/Turbo configuration
   # When using Devise with Hotwire/Turbo, the http status for error responses
