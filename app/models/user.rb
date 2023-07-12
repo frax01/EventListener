@@ -7,12 +7,11 @@ class User < ApplicationRecord
   
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
-      user.email = auth.info.email
-      # auth.
-      user.password = Devise.friendly_token[0, 20]
-      user.nome = auth.info.nome   # assuming the user model has a nome
-      user.uid = auth.uid
-      user.provider = auth.provider
+      # user.password = Devise.friendly_token[0, 20]
+      user.nome = auth.display_name   # assuming the user model has a nome
+      user.email = auth.email
+      user.uid = auth.id
+      user.provider = "spotify"
       puts ""
       puts "called find_or_create"
       # user.image = auth.info.image # assuming the user model has an image
@@ -31,6 +30,7 @@ class User < ApplicationRecord
         puts "#{data}"
         user.uid = data["id"]
         user.provider = "spotify"
+        user.nome = data["display_name"]
         user.email = data["email"] if user.email.blank?
         puts "#{user.uid} #{user.provider}"
       end
