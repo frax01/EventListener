@@ -21,25 +21,39 @@
 
   <div class="centro">
 
+    <%# TO BE HIDDEN %>
+    <div class="field" <%#style="display: none"%> >
+      <%= f.label :provider %><br />
+      <%= f.text_field :provider, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.provider, readonly: true %>
+    </div>
 
+    <%# TO BE HIDDEN %>
+    <div class="field" <%#style="display: none"%> >
+      <%= f.label :uid %><br />
+      <%= f.text_field :uid, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.uid, readonly: true %>
+    </div>
+
+    <%# TO BE HIDDEN %>
     <div class="field">
       <%= f.label :nome %><br />
-      <%= f.text_field :nome, autofocus: true, autocomplete: "nome", maxlength: 20, required: true %>
+      <%= f.text_field :nome, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.nome, readonly: true %>
     </div>
 
+    <%# TO BE REMOVED %>
     <div class="field">
       <%= f.label :cognome %><br />
-      <%= f.text_field :cognome, autofocus: true, autocomplete: "cognome", maxlength: 20, required: true %>
+      <%= f.text_field :cognome, autofocus: true, autocomplete: "cognome", maxlength: 20, required: true, value: @user.cognome, readonly: true %>
     </div>
 
+    <%# TO BE REMOVED %>
     <div class="field">
       <%= f.label :data_di_nascita %><br />
-      <%= f.date_field :data_di_nascita, autofocus: true, autocomplete: "data_di_nascita", required: true %>
+      <%= f.date_field :data_di_nascita, autofocus: true, autocomplete: "data_di_nascita", required: true, value: @user.data_di_nascita, readonly: true %>
     </div>
 
     <div class="field">
       <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, value: @user.email %>
     </div>
 
     <div class="field">

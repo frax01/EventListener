@@ -5,6 +5,7 @@ class User::SessionsController < Devise::SessionsController
 
   # GET /resource/sign_in
   def new
+	puts "sono nell'Userspace Session_new Controller"
     super
   end
 
