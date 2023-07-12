@@ -3,12 +3,18 @@
 <p class="t">EventListener</p>
 <h1>Sign up</h1>
 
-<%#<div class="field">%>
-	<%= label :spotify, "Collega il tuo account Spotify" %><br />
-	<%# link_to image_tag("Spotify_Logo_RGB_Green.png",size: "118x35"), user_spotify_omniauth_authorize_path, method: :post%>
-	<%= button_to image_tag("Spotify_Logo_RGB_Green.png",size: "118x35"), user_spotify_omniauth_authorize_path, data: { turbo: false }%>
-	<br /><br />
-<%#</div>%>
+<%= label :spotify, "Collega il tuo account Spotify" %><br />
+<%= button_to image_tag("Spotify_Logo_RGB_White.png", size: "236x61"),
+        user_spotify_omniauth_authorize_path,
+	data: { turbo: false },
+	style: "background: rgba(30,215,96,0.85);
+			border: none;
+			padding: 5px;
+			border-radius: 10px;
+			overflow: hidden;
+			"%>
+<%# gradiant chosed by Spotify rules, sorry, (https://developer.spotify.com/documentation/design#using-our-colors)%>
+
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 	<%= csrf_meta_tags %>
