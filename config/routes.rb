@@ -7,9 +7,8 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get "/users/sign_in", to: "devise/sessions#new"
-  end
-  devise_scope :user do
-    get "/users/sign_out", :to => "devise/sessions#destroy"
+    get "/users/sign_out", to: "devise/sessions#destroy"
+    get "/users/auth/spotify/callback", to: "users/omniauth_callbacks#spotify"
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
