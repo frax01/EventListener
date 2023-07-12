@@ -1,0 +1,28 @@
+html, body { height: 100%; width: 100%; margin: 0px; min-width: 624px;}
+body { 
+    display: flex;
+    background-color: unset; 
+    overflow-y: scroll; 
+    overflow-x: hidden; 
+    flex-direction: column;
+    align-items: center;
+    margin-top: -10px;
+}
+.t {
+    margin-top: 10px;
+    font-size: 50px;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-bottom: 0px;
+}
+.centro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.field {
+    margin-top: 5px;
+}
+.actions {
+    margin-top: 15px;
+}

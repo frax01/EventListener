@@ -10,8 +10,9 @@ header {
 }
 
 .titolo {
-    font-size: 50px;
+    font-size: 55px;
     font-weight: bold;
+    margin: 0px;
 }
 
 .grid-containerh {
@@ -20,6 +21,7 @@ header {
     width: 100%;
     height: 100%;
     justify-items: center;
+    align-content: center;
   }
 
 .grid-itemh {
@@ -42,7 +44,6 @@ header {
     color: #333;
     text-decoration: none;
     font-size: 20px;
-    margin-top: 10px;
 }
 
 .funzioni-btn:not([disabled]):hover {
@@ -126,11 +127,15 @@ header {
     margin: 0px;
 }
 
-.box#raduni p {
-    margin-bottom: 10px;
-}
-
 .font {
     font-weight: bold;
 }
 
+.vuoto {
+    margin-top: 80px;
+    font-size: 20px;
+}
+
+.default {
+    color: white;
+}

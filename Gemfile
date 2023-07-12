@@ -75,3 +75,13 @@ gem "devise", "~> 4.9"
 gem "figaro"
 gem "omniauth-spotify"
 gem "omniauth-rails_csrf_protection"
+gem 'cucumber'
+gem 'rack-cors', require: 'rack/cors'
+gem 'rspec-rails'
+gem 'httparty'
+
+group :test do
+  gem 'cucumber-rails', require: false
+  # database_cleaner is not mandatory, but highly recommended
+  gem 'database_cleaner'
+end
