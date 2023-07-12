@@ -2,17 +2,19 @@
 
 class User::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    # puts "\033[36muser-regs-controller/new\033[0m"
+    super
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    # puts "\033[36muser-regs-controller/create\033[0m"
+    super
+  end
 
   # GET /resource/edit
   # def edit

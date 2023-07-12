@@ -4,15 +4,27 @@
 <h1>Sign up</h1>
 
 <%= label :spotify, "Collega il tuo account Spotify" %><br />
-<%= button_to image_tag("Spotify_Logo_RGB_White.png", size: "236x61"),
-        user_spotify_omniauth_authorize_path,
-	data: { turbo: false },
-	style: "background: rgba(30,215,96,0.85);
-			border: none;
-			padding: 5px;
-			border-radius: 10px;
-			overflow: hidden;
-			"%>
+<% if @user.provider.blank? %>
+  <%= button_to image_tag("Spotify_Logo_RGB_Green.png", size: "236x61"),
+          user_spotify_omniauth_authorize_path,
+          data: { turbo: false },
+          style: "background: #7F7F7F;
+                          border: none;
+                          padding: 5px;
+                          border-radius: 10px;
+                          overflow: hidden;
+                          "%>
+<% else %>
+  <%= button_to image_tag("Spotify_Logo_RGB_Black.png", size: "236x61"),
+          user_spotify_omniauth_authorize_path,
+          data: { turbo: false },
+          style: "background: #1DB954;
+                          border: none;
+                          padding: 5px;
+                          border-radius: 10px;
+                          overflow: hidden;
+                          "%>
+<% end %>
 <%# gradiant chosed by Spotify rules, sorry, (https://developer.spotify.com/documentation/design#using-our-colors)%>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -35,20 +47,14 @@
 
     <%# TO BE HIDDEN %>
     <div class="field">
-      <%= f.label :nome %><br />
-      <%= f.text_field :nome, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.nome, readonly: true %>
+      <%= f.label :name %><br />
+      <%= f.text_field :name, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.name, readonly: true %>
     </div>
 
-    <%# TO BE REMOVED %>
+    <%# TO BE HIDDEN %>
     <div class="field">
-      <%= f.label :cognome %><br />
-      <%= f.text_field :cognome, autofocus: true, autocomplete: "cognome", maxlength: 20, required: true, value: @user.cognome, readonly: true %>
-    </div>
-
-    <%# TO BE REMOVED %>
-    <div class="field">
-      <%= f.label :data_di_nascita %><br />
-      <%= f.date_field :data_di_nascita, autofocus: true, autocomplete: "data_di_nascita", required: true, value: @user.data_di_nascita, readonly: true %>
+      <%= f.label :image %><br />
+      <%= f.text_field :image, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.image, readonly: true %>
     </div>
 
     <div class="field">
@@ -68,6 +74,8 @@
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true %>
     </div>
+    <p><small><sub>Per la gestione in sicurezza della password consigliamo di utilizzare un <a href="https://bitwarden.com/" target="_blank">password manager</a></sub></small></p>
+
 
     <div class="actions">
       <%= f.submit "Sign up" %>

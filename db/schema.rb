@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_12_113028) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_12_222236) do
   create_table "events", force: :cascade do |t|
     t.integer "id_raduno"
     t.string "email_partecipante"
@@ -40,9 +40,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_12_113028) do
     t.string "provider"
     t.string "uid"
     t.string "status"
-    t.string "nome"
+    t.string "name"
+    t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["uid"], name: "index_users_on_uid", unique: true
   end
 
 end

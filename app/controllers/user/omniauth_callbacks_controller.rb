@@ -11,7 +11,8 @@ class User::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         sign_in_and_redirect @user, event: :authentication #this will throw if @user is not activated
         set_flash_message(:notice, :success, kind: "Spotify") if is_navigational_format?
     else
-        session["devise.spotify_data"] = request.env["omniauth.auth"].expect(:extra)
+        session["devise.spotify_data"] = request.env["omniauth.auth"]#.expect(:extra)
+        puts "\033[35m#{session["devise.spotify_data"]}\033[0m"
         redirect_to new_user_registration_url
     end
   end
