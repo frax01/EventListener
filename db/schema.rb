@@ -22,7 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_12_093531) do
     t.string "nome"
     t.string "cognome"
     t.date "data_di_nascita"
-    t.string "provider"
+    t.string "provider", default: "spotify"
     t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

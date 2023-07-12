@@ -80,7 +80,7 @@
 
 <body>
     <header>
-
+<%= link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'funzioni-btn' %>
         <div class="grid-containerh">
             <div class="grid-itemh">
                 <h1>Ciao <%# @user.nome %></h1>

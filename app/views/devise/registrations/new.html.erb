@@ -21,6 +21,15 @@
 
   <div class="centro">
 
+    <div class="field" style="display: none" >
+      <%= f.label :provider %><br />
+      <%= f.text_field :provider, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.provider %>
+    </div>
+
+    <div class="field" style="display: none" >
+      <%= f.label :uid %><br />
+      <%= f.text_field :uid, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.uid %>
+    </div>
 
     <div class="field">
       <%= f.label :nome %><br />
