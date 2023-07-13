@@ -28,6 +28,7 @@ class User < ApplicationRecord
       user.name = auth.info.name
       user.uid = auth.uid
       user.image = auth.info.image
+      user.is_artist = (auth.info.type=="artist")
     end
   end
 
@@ -42,9 +43,22 @@ class User < ApplicationRecord
         user.provider = data["provider"]
         user.name = data["info"]["name"]
         user.image = data["info"]["image"]
-        puts "\033[35m#{user.uid} #{user.provider}\033[0m"
+        puts "\033[35m#{user.uid} #{user.provider} #{user.email} #{user.name}\033[0m"
+        # RSpotify stuff testing
+        if r_data = session["rspotify.top_artist"]
+          # lazy implementation, array not avaible on sql lite
+          @user.artist0 = r_data.at(0).name
+          @user.artist1 = r_data.at(1).name
+          @user.artist2 = r_data.at(2).name
+          @user.artist3 = r_data.at(3).name
+          @user.artist4 = r_data.at(4).name
+          @user.image0 = r_data.at(0).images.at(0)['url']
+          @user.image1 = r_data.at(1).images.at(0)['url']
+          @user.image2 = r_data.at(2).images.at(0)['url']
+          @user.image3 = r_data.at(3).images.at(0)['url']
+          @user.image4 = r_data.at(4).images.at(0)['url']
+        end
       end
     end
   end
-
 end

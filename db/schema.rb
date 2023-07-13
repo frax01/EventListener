@@ -52,6 +52,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_12_222236) do
     t.string "artist7"
     t.string "artist8"
     t.string "artist9"
+    t.string "image0"
+    t.string "image1"
+    t.string "image2"
+    t.string "image3"
+    t.string "image4"
+    t.string "image5"
+    t.string "image6"
+    t.string "image7"
+    t.string "image8"
+    t.string "image9"
     t.boolean "is_artist", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
