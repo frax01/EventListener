@@ -64,13 +64,6 @@ group :development do
   # gem "spring"
 end
 
-group :test do
-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
-  gem "selenium-webdriver"
-  gem "webdrivers"
-end
-
 gem "devise", "~> 4.9"
 gem "figaro"
 gem 'rspotify'
@@ -79,12 +72,14 @@ gem "omniauth-rails_csrf_protection"
 gem 'cucumber'
 gem 'rack-cors', require: 'rack/cors'
 gem 'rspec-rails'
-gem 'canard', '~> 0.6.2.pre'
-
-gem 'httparty'
-
 group :test do
   gem 'cucumber-rails', require: false
   # database_cleaner is not mandatory, but highly recommended
   gem 'database_cleaner'
+end
+group :test do
+  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem "capybara"
+  gem "selenium-webdriver"
+  gem "webdrivers"
 end

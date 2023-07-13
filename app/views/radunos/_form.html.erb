@@ -17,12 +17,12 @@
 
     <div class="field">
       <%= form.label :descrizione, style: "display: block" %>
-      <%= form.text_field :descrizione, id: "testo" %>
+      <%= form.text_field :descrizione, class: "testo" %>
     </div>
 
     <div class="field">
       <%= form.label :luogo, style: "display: block" %>
-      <%= form.text_field :luogo, id: "testo" %>
+      <%= form.text_field :luogo, class: "testo" %>
     </div>
 
     <div class="field">
@@ -48,7 +48,7 @@
     <br>
 
     <div class="field">
-      <%= form.submit %>
+      <%= form.submit 'Crea Raduno' %>
     </div>
   <div>
 <% end %>

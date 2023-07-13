@@ -27,27 +27,27 @@
   <div class="centro">
     <div class="field" style="display: none" >
       <%= f.label :provider %><br />
-      <%= f.text_field :provider, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.provider, readonly: true, id: "testo" %>
+      <%= f.text_field :provider, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.provider, readonly: true, class: "testo" %>
     </div>
 
     <div class="field" style="display: none" >
       <%= f.label :uid %><br />
-      <%= f.text_field :uid, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.uid, readonly: true, id: "testo" %>
+      <%= f.text_field :uid, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.uid, readonly: true, class: "testo" %>
     </div>
 
     <div class="field" style="display: none" >
       <%= f.label :name %><br />
-      <%= f.text_field :name, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.name, readonly: true, id: "testo" %>
+      <%= f.text_field :name, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.name, readonly: true, class: "testo" %>
     </div>
 
     <div class="field" style="display: none" >
       <%= f.label :image %><br />
-      <%= f.text_field :image, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.image, readonly: true, id: "testo" %>
+      <%= f.text_field :image, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.image, readonly: true, class: "testo" %>
     </div>
 
     <div class="field">
       <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, value: @user.email, id: "testo" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, value: @user.email, class: "testo" %>
     </div>
 
     <div class="field">
@@ -55,12 +55,12 @@
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %>cm,1m,1cs,1n)</em>
       <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password", required: true, id: "testo" %>
+      <%= f.password_field :password, autocomplete: "new-password", required: true, class: "testo" %>
     </div>
 
     <div class="field">
       <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true, id: "testo" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true, class: "testo" %>
     </div>
     <p><small><sub>Per la gestione della password consigliamo un <a href="https://bitwarden.com/" target="_blank">password manager</a></sub></small></p>
 
