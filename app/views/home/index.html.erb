@@ -62,17 +62,16 @@
 
 <body>
     <header>
-<%= link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'funzioni-btn' %>
         <div class="grid-containerh">
             <div class="grid-itemh">
-              <div style="background-color: #1db954; border-radius: 10px; display: inline-flex; align-items: center; padding: 5px;">
-                <img src="<%= @user.image %>" alt="Immagine utente" width="48" height="48" style="border-radius: 50%;">
-                <span style="margin-left: 10px; color: #191414; font-weight: bold;"><%= @user.uid %></span>
+              <div class="profilo">
+                <img src="<%= @user.image %>">
+                <span>Ciao <%= @user.uid %></span>
               </div>
 
             </div>
             <div class="grid-itemh">
-                <div class="titolo">EventListener</div>
+                <div class="titolo">Event Listener</div>
             </div>
             <div class="grid-itemh" id="num3">
                 <% if current_user.status=='Artista' %>

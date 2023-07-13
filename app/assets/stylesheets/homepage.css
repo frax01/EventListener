@@ -15,6 +15,26 @@ header {
     margin: 0px;
 }
 
+.profilo {
+    background-color: #1db954; 
+    border-radius: 5px; 
+    display: inline-flex; 
+    align-items: center; 
+    padding: 5px;
+}
+
+span {
+    margin-left: 10px; 
+    color: #191414; 
+    font-weight: bold;
+}
+
+img {
+    width: 48px;
+    height: 48px;
+    border-radius: 5px;
+}
+
 .grid-containerh {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -124,7 +144,7 @@ header {
 }
 
 .box p {
-    margin: 0px;
+    margin: 10px;
 }
 
 .font {
