@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :users
   resources :radunos
+  resources :events
 
   root :to => redirect('/home')
   get '/home', to: 'home#index'

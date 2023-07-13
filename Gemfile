@@ -79,6 +79,8 @@ gem "omniauth-rails_csrf_protection"
 gem 'cucumber'
 gem 'rack-cors', require: 'rack/cors'
 gem 'rspec-rails'
+gem 'canard', '~> 0.6.2.pre'
+
 gem 'httparty'
 
 group :test do
