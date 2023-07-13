@@ -9,19 +9,6 @@ class User < ApplicationRecord
     params.require(:user).permit(:name, :provider, :uid, :image, :email, :password, :password_confirmation)
   end
 
-  # implemented via chatgpt
-  def assign_from_spotify(auth)
-    self.provider = auth.provider
-    self.email = auth.email
-    self.name = auth.info.name
-    self.uid = auth.uid
-    self.image = auth.info.image
-    puts "#{auth.uid}"
-    puts "#{auth.provider}"
-    puts "#{auth.info.name}"
-    puts "#{auth.info.image}"
-  end
-
   validate :password_complexity
   private
 
@@ -36,7 +23,11 @@ class User < ApplicationRecord
   def self.from_omniauth(auth)
     puts "\033[43;30mfind_or_create\033[0m"
     find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
-      user.assign_from_spotify(auth)
+      user.provider = auth.provider
+      user.email = auth.email
+      user.name = auth.info.name
+      user.uid = auth.uid
+      user.image = auth.info.image
     end
   end
 

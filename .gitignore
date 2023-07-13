@@ -38,6 +38,9 @@
 /config/application.yml
 
 # Ignore editors and tool associated
+*~
+*.swo
+*.swn
 *.swp
 *tags
 .vscode
