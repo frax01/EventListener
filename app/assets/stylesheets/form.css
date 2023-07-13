@@ -34,6 +34,10 @@ body {
 .actions {
     margin: 20px;
 }
+.bottone {
+    margin-top: 10px;
+    font-size: 25px;
+}
 .spotify#nero {
     background-color: #191414;
     border: none;

@@ -14,9 +14,9 @@
   <% end %>
 
   <div class="centro">
-    <div class="field">
-      <%= form.label :email_partecipante, style: "display: block" %>
-      <%= form.text_field :email_partecipante, class: "testo", value: current_user.email %>
+    <div style="font-size: 17px; font-weight: bold;">Verrai iscritto al Raduno con questa email:</div>
+    <div class="field" style="margin-top: 10px;">
+      <%= form.text_field :email_partecipante, class: "testo", value: current_user.email, readonly: true, style: "text-align: center;" %>
     </div>
 
     <div class="field" style="display: none">
@@ -24,8 +24,10 @@
       <%= form.number_field :id_raduno, value: params[:id_raduno], readonly: true %>
     </div>
 
-    <div>
-      <%= form.submit 'Iscriviti' %>
+    <br>
+    <div style="font-size: 20px; font-weight: bold;">Iscrivendoti confermi di voler ricevere notifiche sul Raduno stesso</div>
+    <div style="cursor: pointer;">
+      <%= form.submit 'Iscriviti', class: "bottone" %>
     </div>
   <div>
 <% end %>
