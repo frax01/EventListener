@@ -3,20 +3,21 @@
 <p class="t">EventListener</p>
 <h1>Sign up</h1>
 
-<%= label :spotify, "Collega il tuo account Spotify" %><br />
 <% if @user.provider.blank? %>
+  <%= label :spotify, "Collega il tuo account Spotify" %><br />
   <%= button_to image_tag("Spotify_Logo_RGB_Green.png", size: "236x61"),
-          user_spotify_omniauth_authorize_path,
+          user_spotify_omniauth_authorize_path(show_dialog: true),
           data: { turbo: false },
-          style: "background: #7F7F7F;
+          style: "background: #191414;
                           border: none;
                           padding: 5px;
                           border-radius: 10px;
                           overflow: hidden;
                           "%>
 <% else %>
+  <%= label :spotify, "Account collegato con successo!" %><br />
   <%= button_to image_tag("Spotify_Logo_RGB_Black.png", size: "236x61"),
-          user_spotify_omniauth_authorize_path,
+          user_spotify_omniauth_authorize_path(show_dialog: true),
           data: { turbo: false },
           style: "background: #1DB954;
                           border: none;

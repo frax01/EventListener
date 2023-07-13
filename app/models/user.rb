@@ -9,6 +9,19 @@ class User < ApplicationRecord
     params.require(:user).permit(:name, :provider, :uid, :image, :email, :password, :password_confirmation)
   end
 
+  # implemented via chatgpt
+  def assign_from_spotify(auth)
+    self.provider = auth.provider
+    self.email = auth.email
+    self.name = auth.info.name
+    self.uid = auth.uid
+    self.image = auth.info.image
+    puts "#{auth.uid}"
+    puts "#{auth.provider}"
+    puts "#{auth.info.name}"
+    puts "#{auth.info.image}"
+  end
+
   validate :password_complexity
   private
 
@@ -23,15 +36,7 @@ class User < ApplicationRecord
   def self.from_omniauth(auth)
     puts "\033[43;30mfind_or_create\033[0m"
     find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
-      # user.password = Devise.friendly_token[0, 20]
-      user.name = auth.display_name   # assuming the user model has a name
-      user.email = auth.email
-      user.uid = auth.id
-      user.provider = "spotify"
-      # user.image = auth.info.image # assuming the user model has an image
-      # If you are using confirmable and the provider(s) you use validate emails,
-      # uncomment the line below to skip the confirmation emails.
-      # user.skip_confirmation!
+      user.assign_from_spotify(auth)
     end
   end
 
@@ -50,4 +55,5 @@ class User < ApplicationRecord
       end
     end
   end
+
 end

@@ -5,15 +5,15 @@
 <h1>Log in</h1>
 
 <%= label :Spotify, "ACCEDI CON SPOTIFY" %>
-<%= button_to image_tag("Spotify_Logo_RGB_White.png", size: "236x61"),
-        user_spotify_omniauth_authorize_path,
-	data: { turbo: false },
-	style: "background: rgba(30,215,96,0.85);
-			border: none;
-			padding: 5px;
-			border-radius: 10px;
-			overflow: hidden;
-			"%>
+<%= button_to image_tag("Spotify_Logo_RGB_Black.png", size: "236x61"),
+        user_spotify_omniauth_authorize_path(show_dialog: true),
+        data: { turbo: false },
+        style: "background: #1DB954;
+                        border: none;
+                        padding: 5px;
+                        border-radius: 10px;
+                        overflow: hidden;
+                        "%>
 <%# gradiant chosed by Spotify rules, sorry, (https://developer.spotify.com/documentation/design#using-our-colors)%>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
