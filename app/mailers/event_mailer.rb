@@ -9,7 +9,7 @@ class EventMailer < ApplicationMailer
     @user = params[:user]
     @event = params[:event]
 
-    mail to: @user.mail
+    mail to: @user.email
   end
 
   # Mailer to send to all event participants
@@ -22,6 +22,6 @@ class EventMailer < ApplicationMailer
     @event = params[:event]
     @greeting = "Hi"
 
-    mail to: @user.mail,
+    mail to: @user.email
   end
 end
