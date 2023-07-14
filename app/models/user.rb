@@ -2,8 +2,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: [:spotify]
+    :recoverable, :rememberable, :validatable,
+    :omniauthable, omniauth_providers: [:spotify]
 
   def self.sign_up_params
     params.require(:user).permit(:name, :provider, :uid, :image, :email, :password, :password_confirmation)
@@ -34,32 +34,25 @@ class User < ApplicationRecord
 
   def self.new_with_session(params, session)
     puts "\033[43;30mnew_with_session\033[0m"
+    puts "---PARAMS\n#{params}\n"
     super.tap do |user|
-      if data = session["devise.spotify_data"] #&& session["devise.spotify_data"]["raw_info"]#["extra"]  #this is strictly removed by caller function
-        puts "\033[31m#{data}\033[0m"
-        puts "#{data["info"]}"
-        user.email = data["info"]["email"] if user.email.blank?
-        user.uid = data["uid"]
+      if data = session["ad_hoc.hash"]
+        puts "\033[4;34m#{data.to_hash}\033[0m"
+        user.uid = data['uid']
         user.provider = data["provider"]
-        user.name = data["info"]["name"]
-        user.image = data["info"]["image"]
-        puts "\033[35m#{user.uid} #{user.provider} #{user.email} #{user.name}\033[0m"
-        # RSpotify stuff testing
-        if r_data = session["rspotify.top_artist"]
-          puts "\033[35m ENTRY RSPOTIFY SECTION!\033[0m"
-          puts "\n#{r_data}\n"
-          # lazy implementation, array not avaible on sql lite
-          @user.artist0 = r_data.at(0).name
-          @user.artist1 = r_data.at(1).name
-          @user.artist2 = r_data.at(2).name
-          @user.artist3 = r_data.at(3).name
-          @user.artist4 = r_data.at(4).name
-          @user.image0 = r_data.at(0).images.at(0)['url']
-          @user.image1 = r_data.at(1).images.at(0)['url']
-          @user.image2 = r_data.at(2).images.at(0)['url']
-          @user.image3 = r_data.at(3).images.at(0)['url']
-          @user.image4 = r_data.at(4).images.at(0)['url']
-        end
+        user.email = data["email"]
+        user.name = data["name"]
+        user.image = data["image"]
+        user.artist0 = data["artist0"]
+        user.artist1 = data["artist1"]
+        user.artist2 = data["artist2"]
+        user.artist3 = data["artist3"]
+        user.artist4 = data["artist4"]
+        user.image0 = data["image0"]
+        user.image1 = data["image1"]
+        user.image2 = data["image2"]
+        user.image3 = data["image3"]
+        user.image4 = data["image4"]
       end
     end
   end
