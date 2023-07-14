@@ -1,6 +1,7 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  has_many :events
+  has_many :radunos
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:spotify]
@@ -9,7 +10,6 @@ class User < ApplicationRecord
     params.require(:user).permit(:name, :provider, :uid, :image, :email, :password, :password_confirmation)
   end
 
-  # implemented via chatgpt
   def assign_from_spotify(auth)
     self.provider = auth.provider
     self.email = auth.email

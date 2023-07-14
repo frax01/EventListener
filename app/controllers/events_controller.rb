@@ -22,6 +22,12 @@ class EventsController < ApplicationController
   # POST /events or /events.json
   def create
     @event = Event.new(event_params)
+    @event.user = current_user
+    puts "User dell'evento: #{@event.user}"
+    @raduno = Raduno.find(event_params[:id_raduno])
+    puts "Raduno: #{@raduno}"
+    @event.raduno = @raduno
+    puts "Raduno dell'evento: #{@event.raduno}"
 
     respond_to do |format|
       if @event.save
