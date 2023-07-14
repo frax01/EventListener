@@ -13,6 +13,7 @@
 <%# gradiant chosed by Spotify rules, sorry, (https://developer.spotify.com/documentation/design#using-our-colors)%>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="centro">
+
       <div class="field">
         <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "testo" %>

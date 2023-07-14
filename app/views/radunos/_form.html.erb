@@ -52,13 +52,5 @@
     <div class="field">
       <%= form.submit 'Crea Raduno' %>
     </div>
-
-    <!--Una volta mandata la form bisogna fare:-->
-    <!--L'applicazione non appena un Raduno viene modificato manda un messaggio(mail broadcast) a tutti gli iscritti con i cambiamenti apportati. La mail viene mandata solo se c'è almeno un cambiamento nelle informazioni scritte-->
-    <!--per prima cosa bisogna verificare se il raduno è stato aggiornato, questo lo si fa vedendo se raduno.created_at!=nil && raduno.created_at!=raduno.updated_at, in caso positivo:-->
-    <!--si prendono tutti gli eventi-->
-    <!--da questi si controllano quelli che hanno raduno.id=event.raduno_id-->
-    <!--da questi si prendono tutti le email_partecipante a cui mandare la mail:-->
-    <!--il raduno <%= raduno.id %> è stato modificato -->
   <div>
 <% end %>

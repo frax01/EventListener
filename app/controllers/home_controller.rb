@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+
   def index
     @user=current_user
     @fan=[@user.artist0, @user.artist1, @user.artist2, @user.artist3, @user.artist4]
@@ -10,6 +11,6 @@ class HomeController < ApplicationController
     elsif !@user.uid.nil? && @fan!=nil
       @user.update(status: "Fan")
     end
-
   end
+
 end
