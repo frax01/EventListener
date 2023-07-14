@@ -44,6 +44,7 @@ class User < ApplicationRecord
         user.email = data["email"]
         user.name = data["name"]
         user.image = data["image"]
+        user.is_artist = data["is_artist"]=="artist"
         user.artist0 = data["artist0"]
         user.artist1 = data["artist1"]
         user.artist2 = data["artist2"]

@@ -41,6 +41,10 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  # Allow mailer previews
+  config.action_mailer.show_previews = true
+  #config.action_mailer.preview_path = "#{Rails.root}/rails/mailer"
+
 =begin
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.delivery_method = :smtp

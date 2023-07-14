@@ -22,6 +22,7 @@ class User::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         "email" => request.env["omniauth.auth"]["info"]["email"],
         "name" => request.env["omniauth.auth"]["info"]["name"],
         "image" => request.env["omniauth.auth"]["info"]["image"],
+        "is_artist" => request.env["omniauth.auth"]["info"]["type"],
         "artist0" => r_top_artists.at(0).name,
         "artist1" => r_top_artists.at(1).name,
         "artist2" => r_top_artists.at(2).name,
