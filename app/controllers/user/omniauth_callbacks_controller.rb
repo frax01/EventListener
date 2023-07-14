@@ -36,6 +36,10 @@ class User::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       # debug version to see what we pass
       puts "------HASH_VALUE--------\n\033[36;1m\n#{custom_hash.values}"
       session["ad_hoc.hash"] = custom_hash
+      # fix session problem
+      session["session_id"]=""
+      session["user_return_to"]=""
+      session["devise.spotify_data"]=""
       puts "----------SESSION-----------\n\033[35m#{session.values}\033[0m\n"
       redirect_to new_user_registration_url
     end
