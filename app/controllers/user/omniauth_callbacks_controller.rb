@@ -35,25 +35,6 @@ class User::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       ]
       # debug version to see what we pass
       puts "------HASH_VALUE--------\n\033[36;1m\n#{custom_hash.values}"
-=begin
-      puts "\033[36;1m"
-      puts "\tuid => #{request.env["omniauth.auth"]["uid"]}"
-      puts "\tprovider => #{request.env["omniauth.auth"]["provider"]}"
-      puts "\temail => #{request.env["omniauth.auth"]["info"]["email"]}"
-      puts "\tname => #{request.env["omniauth.auth"]["info"]["name"]}"
-      puts "\timage => #{request.env["omniauth.auth"]["info"]["image"]}"
-      puts "\tartist0 => #{r_top_artists.at(0).name}"
-      puts "\tartist1 => #{r_top_artists.at(1).name}"
-      puts "\tartist2 => #{r_top_artists.at(2).name}"
-      puts "\tartist3 => #{r_top_artists.at(3).name}"
-      puts "\tartist4 => #{r_top_artists.at(4).name}"
-      puts "\timage0 => #{r_top_artists.at(0).images.at(0)["url"]}"
-      puts "\timage1 => #{r_top_artists.at(1).images.at(0)["url"]}"
-      puts "\timage2 => #{r_top_artists.at(2).images.at(0)["url"]}"
-      puts "\timage3 => #{r_top_artists.at(3).images.at(0)["url"]}"
-      puts "\timage4 => #{r_top_artists.at(4).images.at(0)["url"]}"
-      puts "\033[0m"
-=end
       session["ad_hoc.hash"] = custom_hash
       puts "----------SESSION-----------\n\033[35m#{session.values}\033[0m\n"
       redirect_to new_user_registration_url

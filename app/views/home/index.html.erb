@@ -2,10 +2,9 @@
     <%= stylesheet_link_tag 'homepage' %>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script>
+    <script>        
         function deleteEvento(eventsId) {
             if (confirm("Sei sicuro di non voler più partecipare a questo raduno?")) {
-            // Se l'utente conferma, esegui l'azione di eliminazione
             fetch("/events/" + eventsId, {
                 method: "DELETE",
                 headers: {
@@ -16,11 +15,9 @@
             })
             .then(response => {
                 if (response.ok) {
-                    // Il raduno è stato eliminato con successo, aggiorna la pagina
                     window.location.reload();
                 } 
                 else {
-                    // Eventuali errori durante l'eliminazione del raduno
                     console.error("Errore durante l'eliminazione del raduno");
                 }
                 })
@@ -32,7 +29,6 @@
 
         function deleteRaduno(radunoId) {
             if (confirm("Sei sicuro di voler eliminare questo raduno?")) {
-            // Se l'utente conferma, esegui l'azione di eliminazione
             fetch("/radunos/" + radunoId, {
                 method: "DELETE",
                 headers: {
@@ -43,11 +39,9 @@
             })
             .then(response => {
                 if (response.ok) {
-                    // Il raduno è stato eliminato con successo, aggiorna la pagina
                     window.location.reload();
                 } 
                 else {
-                    // Eventuali errori durante l'eliminazione del raduno
                     console.error("Errore durante l'eliminazione del raduno");
                 }
                 })
@@ -57,28 +51,26 @@
             }
         }
     </script>
-
 </head>
 
 <body>
     <header>
-<%= link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'funzioni-btn' %>
         <div class="grid-containerh">
             <div class="grid-itemh">
-              <div style="background-color: #1db954; border-radius: 10px; display: inline-flex; align-items: center; padding: 5px;">
-                <img src="<%= @user.image %>" alt="Immagine utente" width="48" height="48" style="border-radius: 50%;">
-                <span style="margin-left: 10px; color: #191414; font-weight: bold;"><%= @user.uid %></span>
+              <div class="profilo">
+                <img src="<%= @user.image %>">
+                <span>Ciao <%= @user.uid %></span>
               </div>
 
             </div>
             <div class="grid-itemh">
-                <div class="titolo">EventListener</div>
+                <div class="titolo">Event Listener</div>
             </div>
             <div class="grid-itemh" id="num3">
                 <% if current_user.status=='Artista' %>
                     <%= link_to 'Crea Raduno', new_raduno_path, class: 'funzioni-btn' %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <% else %>
-                    <%= link_to 'Crea Raduno', new_raduno_path, class: 'funzioni-btn', disabled: true %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <%= link_to 'Crea Raduno', new_raduno_path, class: 'disabled-link' %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <% end %>
                 <% if user_signed_in? %>
                     <%= link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'funzioni-btn' %>
@@ -90,12 +82,19 @@
 
     <div class="grid-container" id="colonne">
         <div class="grid-item">
-            <div class="intestazione">Fan di:</div>
-            <% if @fan.present? %>
-                <% @fan.each do |fan| %>
-                    <div class="box" id="fan">
-                        <p><%= fan %></p>
-                    </div>
+            <div class="intestazione">Fan di</div>
+            <% if current_user.status != "Listener" %>
+                <% user = User.find_by(email: current_user.email) %>
+                <% (0..4).each do |i| %>
+                    <% artist_field = "artist#{i}" %>
+                    <% artist_value = user.send(artist_field) %>
+                    <% if artist_value!=nil %>
+                        <div class="box" id="fan">
+                            <p><%= artist_value %></p>
+                        </div>
+                    <% else %>
+                        <% next %>
+                    <% end %>
                 <% end %>
             <% else %>
                 <div class="vuoto">
@@ -104,24 +103,50 @@
             <% end %>
         </div>
         <div class="grid-item">
-            <div class="intestazione">Raduni:</div>
+            <div class="intestazione">Raduni</div>
+            <% user = User.find_by(email: current_user.email) %>
+            <!--<% user.update(status: "Artista") %>
+            <% user.update(artist0: "Francesco") %>
+            <% user.update(artist1: "Marco") %>
+            <% user.update(artist2: "Giovanni") %>
+            <% user.update(artist3: "Simone") %>
+            <% user.update(artist4: nil) %>-->
             <% if Raduno.any? %>
-                <% Raduno.all.each do |raduno| %>
-                    <div class="box" id="raduni">
-                        <p>Artista: <%= raduno.nome_darte_organizzatore %></p>
-                        <p>Descrizione: <%= raduno.descrizione %></p>
-                        <p>Data: <%= raduno.data %></p>
-                        <p>Orario: <%= raduno.orario.strftime("%H:%M") %></p>
-                        <p>Luogo: <%= raduno.luogo %></p>
-                        <div class="funzioni">
-                            <% if raduno.email == current_user.email %>
-                                <button class="funzioni-btn" id="partecipa_<%= raduno.id %>" disabled>Partecipa</button>
-                            <% elsif Event.any? && current_user.email==Event.find_by(id_raduno: raduno.id)&.email_partecipante %>
-                                <button class="funzioni-btn" id="partecipa_<%= raduno.id %>" disabled>Partecipa</button>
-                            <% else %>
-                                <%= link_to 'Partecipa', new_event_path(id_raduno: raduno.id), class: 'funzioni-btn', id: 'partecipa_'+raduno.id.to_s %>
-                            <% end %>
-                        </div>
+                <% artists_array = [] %>
+                <% (0..4).each do |i| %>
+                    <% artist_field = "artist#{i}" %>
+                    <% artist_value = user.send(artist_field) %>
+                    <% artists_array.push(artist_value) %>
+                <% end %>
+                <% div_added = false %>
+                <% artists_array.each do |artist_value| %>
+                    <% raduni_corrispondenti = Raduno.where(nome_darte_organizzatore: artist_value) %>
+                    <% raduni_corrispondenti.each do |raduno| %>
+                        <% if raduno.email==current_user.email %>
+                            <% next %>
+                        <% else %>
+                            <% div_added = true %>
+                            <div class="box" id="raduni">
+                                <p>Artista: <%= raduno.nome_darte_organizzatore %></p>
+                                <p>Descrizione: <%= raduno.descrizione %></p>
+                                <p>Data: <%= raduno.data %></p>
+                                <p>Orario: <%= raduno.orario.strftime("%H:%M") %></p>
+                                <p>Luogo: <%= raduno.luogo %></p>
+                                <div class="funzioni">
+                                    <% if Event.any? && current_user.email==Event.find_by(id_raduno: raduno.id)&.email_partecipante %>
+                                        <!--<%= link_to 'Partecipa', new_raduno_path, class: 'disabled-link', id: 'partecipa_'+raduno.id.to_s %>-->
+                                        <button class="funzioni-btn" id="partecipa_<%= raduno.id %>" disabled>Partecipa</button>
+                                    <% else %>
+                                        <%= link_to 'Partecipa', new_event_path(id_raduno: raduno.id), class: 'funzioni-btn', id: 'partecipa_'+raduno.id.to_s %>
+                                    <% end %>
+                                </div>
+                            </div>
+                        <% end %>
+                    <% end %>
+                <% end %>
+                <% unless div_added %>
+                    <div class="vuoto">
+                        <p class="default">Non puoi partecipare a nessun raduno</p>
                     </div>
                 <% end %>
             <% else %>
@@ -132,7 +157,7 @@
         </div>
         <div class="grid-container" id="righe">
             <div class="grid-item" id="elem1">
-                <div class="intestazione">Raduni a cui partecipi:</div>
+                <div class="intestazione">Raduni a cui partecipi</div>
                 <% if Event.any? && Raduno.any? %>
                     <% Event.all.each do |evento| %>
                         <% if current_user.email==evento.email_partecipante %>
@@ -156,27 +181,32 @@
                 <% end %>
             </div>
             <div class="grid-item" id="elem2">
-                <div class="intestazione">Raduni creati:</div>
-                <!--implementare la verifiche di utente=artista-->
-                <% if Raduno.any? %>
-                    <% Raduno.all.each do |raduno| %>
-                        <% if raduno.email == current_user.email %>
-                            <div class="box" id="raduni">
-                                <p>Descrizione: <%= raduno.descrizione %></p>
-                                <p>Data: <%= raduno.data %></p>
-                                <p>Orario: <%= raduno.orario.strftime("%H:%M") %></p>
-                                <p>Luogo: <%= raduno.luogo %></p>
-                                <div class="funzioni">
-                                    <%= link_to 'Modifica', edit_raduno_path(raduno), class: 'funzioni-btn' %>
-                                    <!--invia_email('graziellazizi1@gmail.com', 'Esempio di mail', 'Ciao, questa è una email di esempio inviata da Ruby!')-->
-                                    <button class="funzioni-btn" onclick="deleteRaduno(<%= raduno.id %>)">Elimina</button> 
+                <div class="intestazione">Raduni creati</div>
+                <% if current_user.status=="Artista" %>
+                    <% if Raduno.exists?(email: current_user.email) %>
+                        <% Raduno.all.each do |raduno| %>
+                            <% if raduno.email == current_user.email %>
+                                <div class="box" id="raduni">
+                                    <p>Descrizione: <%= raduno.descrizione %></p>
+                                    <p>Data: <%= raduno.data %></p>
+                                    <p>Orario: <%= raduno.orario.strftime("%H:%M") %></p>
+                                    <p>Luogo: <%= raduno.luogo %></p>
+                                    <div class="funzioni">
+                                        <button onclick="window.location.href='<%= edit_raduno_path(raduno) %>'" class="funzioni-btn">Modifica</button>
+                                        <!--<%= link_to 'Modifica', edit_raduno_path(raduno), class: 'funzioni-btn' %>-->
+                                        <button class="funzioni-btn" onclick="deleteRaduno(<%= raduno.id %>)">Elimina</button> 
+                                    </div>
                                 </div>
-                            </div>
+                            <% end %>
                         <% end %>
+                    <% else %>
+                        <div class="vuoto">
+                            <p class="default">Nessun raduno creato</p>
+                        </div>
                     <% end %>
                 <% else %>
                     <div class="vuoto">
-                        <p class="default">Nessun raduno presente</p>
+                        <p class="default">Non puoi ancora creare raduni</p>
                     </div>
                 <% end %>
             </div>

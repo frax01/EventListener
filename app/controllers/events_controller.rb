@@ -22,10 +22,16 @@ class EventsController < ApplicationController
   # POST /events or /events.json
   def create
     @event = Event.new(event_params)
+    @event.user = current_user
+    puts "User dell'evento: #{@event.user}"
+    @raduno = Raduno.find(event_params[:id_raduno])
+    puts "Raduno: #{@raduno}"
+    @event.raduno = @raduno
+    puts "Raduno dell'evento: #{@event.raduno}"
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to event_url(@event), notice: "Event was successfully created." }
+        format.html { redirect_to '/home#index', notice: "Event was successfully created." }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new, status: :unprocessable_entity }

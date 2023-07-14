@@ -1,4 +1,6 @@
-<%= form_with(model: event) do |form| %>
+<%= stylesheet_link_tag 'form' %>
+
+<%= form_with(model: event, id: 'partecipa-form') do |form| %>
   <% if event.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
@@ -11,17 +13,26 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :id_raduno, style: "display: block" %>
-    <%= form.number_field :id_raduno %>
-  </div>
+  <div class="centro">
+    <div style="font-size: 17px; font-weight: bold;">Verrai iscritto al Raduno con questa email:</div>
+    <div class="field" style="margin-top: 10px;">
+      <%= form.text_field :email_partecipante, class: "testo", value: current_user.email, readonly: true, style: "text-align: center;" %>
+    </div>
 
-  <div>
-    <%= form.label :email_partecipante, style: "display: block" %>
-    <%= form.text_field :email_partecipante %>
-  </div>
+    <div class="field">
+      <%= form.hidden_field :user_id, value: current_user.id %>
+    </div>
 
+
+    <div class="field" style="display: none">
+      <%= form.label :id_raduno, style: "display: block" %>
+      <%= form.number_field :id_raduno, value: params[:id_raduno], readonly: true %>
+    </div>
+
+    <br>
+    <div style="font-size: 20px; font-weight: bold;">Iscrivendoti confermi di voler ricevere notifiche sul Raduno stesso</div>
+    <div style="cursor: pointer;">
+      <%= form.submit 'Iscriviti', class: "bottone" %>
+    </div>
   <div>
-    <%= form.submit %>
-  </div>
 <% end %>

@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag 'form' %>
+
 <%= form_with(model: raduno) do |form| %>
   <% if raduno.errors.any? %>
     <div style="color: red">
@@ -11,37 +13,46 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :nome_darte_organizzatore, style: "display: block" %>
-    <%= form.text_field :nome_darte_organizzatore %>
-  </div>
+  <div class="centro">
 
-  <div>
-    <%= form.label :descrizione, style: "display: block" %>
-    <%= form.text_field :descrizione %>
-  </div>
+    <div class="field">
+      <%= form.label :descrizione, style: "display: block" %>
+      <%= form.text_field :descrizione, class: "testo" %>
+    </div>
 
-  <div>
-    <%= form.label :data, style: "display: block" %>
-    <%= form.date_field :data %>
-  </div>
+    <div class="field">
+      <%= form.label :luogo, style: "display: block" %>
+      <%= form.text_field :luogo, class: "testo" %>
+    </div>
 
-  <div>
-    <%= form.label :orario, style: "display: block" %>
-    <%= form.time_field :orario %>
-  </div>
+    <div class="field">
+      <%= form.label :data, style: "display: block" %>
+      <%= form.date_field :data %>
+    </div>
 
-  <div>
-    <%= form.label :luogo, style: "display: block" %>
-    <%= form.text_field :luogo %>
-  </div>
+    <div class="field">
+      <%= form.label :orario, style: "display: block" %>
+      <%= form.time_field :orario %>
+    </div>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
-  </div>
+    <div class="field">
+      <%= form.hidden_field :user_id, value: current_user.id %>
+    </div>
 
+    <div class="field" style="display: none">
+      <%= form.label :nome_darte_organizzatore, style: "display: block" %>
+      <%= form.text_field :nome_darte_organizzatore, value: current_user.name %>
+    </div>
+
+    <div class="field" style="display: none">
+      <%= form.label :email, style: "display: block" %>
+      <%= form.text_field :email, value: current_user.email %>
+    </div>
+
+    <br>
+
+    <div class="field">
+      <%= form.submit 'Crea Raduno' %>
+    </div>
   <div>
-    <%= form.submit %>
-  </div>
 <% end %>
