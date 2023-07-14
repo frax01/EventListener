@@ -41,15 +41,13 @@
 
     <div class="field" style="display: none">
       <%= form.label :nome_darte_organizzatore, style: "display: block" %>
-      <%= form.text_field :nome_darte_organizzatore, value: current_user.name %>
+      <%= form.text_field :nome_darte_organizzatore, value: current_user.uid %>
     </div>
 
     <div class="field" style="display: none">
       <%= form.label :email, style: "display: block" %>
       <%= form.text_field :email, value: current_user.email %>
     </div>
-
-    <br>
 
     <div class="field">
       <%= form.submit 'Crea Raduno' %>

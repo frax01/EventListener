@@ -8,5 +8,5 @@ Feature:  Partecipazione Raduno da Fan:
                     And confermo l'iscrizione cliccando su "Iscriviti"
                     Then vengo riportato sulla homepage
                     And vedo il raduno a cui partecipo
-                    And provo ad iscrivermi di nuovo cliccando su Partecipa allo stesso Raduno con descrizione "canzoni inedite"
+                    And provo ad iscrivermi di nuovo allo stesso Raduno con descrizione "canzoni inedite"
                     Then non accade niente e rimango sulla homepage

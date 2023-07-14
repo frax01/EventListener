@@ -12,7 +12,7 @@
           id: "nero"%>
 <% else %>
   <%= label :spotify, "Account collegato con successo!" %><br />
-  <%= button_to image_tag("Spotify_Logo_RGB_Black.png", size: "236x61"),
+  <%= button_to image_tag("Spotify_Logo_RGB_Black.png", size: "310x90"),
           user_spotify_omniauth_authorize_path(show_dialog: true),
           data: { turbo: false },
           class: "spotify",
@@ -46,68 +46,48 @@
     </div>
 
     <%# TO BE HIDDEN %>
-    <div class="field">
-      <%= f.label :artist0 %><br />
-      <%= f.text_field :artist0, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.artist0, readonly: true %>
-    </div>
+    <%= f.hidden_field :artist0, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.artist0, readonly: true %>
+
 
     <%# TO BE HIDDEN %>
-    <div class="field">
-      <%= f.label :image0 %><br />
-      <%= f.text_field :image0, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.image0, readonly: true %>
-    </div>
+    <%= f.hidden_field :image0, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.image0, readonly: true %>
+
 
     <%# TO BE HIDDEN %>
-    <div class="field">
-      <%= f.label :artist1 %><br />
-      <%= f.text_field :artist1, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.artist1, readonly: true %>
-    </div>
+    <%= f.hidden_field :artist1, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.artist1, readonly: true %>
+
 
     <%# TO BE HIDDEN %>
-    <div class="field">
-      <%= f.label :image1 %><br />
-      <%= f.text_field :image1, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.image1, readonly: true %>
-    </div>
+    <%= f.hidden_field :image1, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.image1, readonly: true %>
+
 
     <%# TO BE HIDDEN %>
-    <div class="field">
-      <%= f.label :artist2 %><br />
-      <%= f.text_field :artist2, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.artist2, readonly: true %>
-    </div>
+    <%= f.hidden_field :artist2, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.artist2, readonly: true %>
+
 
     <%# TO BE HIDDEN %>
-    <div class="field">
-      <%= f.label :image2 %><br />
-      <%= f.text_field :image2, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.image2, readonly: true %>
-    </div>
+    <%= f.hidden_field :image2, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.image2, readonly: true %>
+
 
     <%# TO BE HIDDEN %>
-    <div class="field">
-      <%= f.label :artist3 %><br />
-      <%= f.text_field :artist3, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.artist3, readonly: true %>
-    </div>
+    <%= f.hidden_field :artist3, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.artist3, readonly: true %>
+
 
     <%# TO BE HIDDEN %>
-    <div class="field">
-      <%= f.label :image3 %><br />
-      <%= f.text_field :image3, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.image3, readonly: true %>
-    </div>
+    <%= f.hidden_field :image3, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.image3, readonly: true %>
+
 
     <%# TO BE HIDDEN %>
-    <div class="field">
-      <%= f.label :artist4 %><br />
-      <%= f.text_field :artist4, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.artist4, readonly: true %>
-    </div>
+    <%= f.hidden_field :artist4, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.artist4, readonly: true %>
+
 
     <%# TO BE HIDDEN %>
-    <div class="field">
-      <%= f.label :image4 %><br />
-      <%= f.text_field :image4, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.image4, readonly: true %>
-    </div>
+    <%= f.hidden_field :image4, autofocus: true, autocomplete: "nome", maxlength: 20, required: true, value: @user.image4, readonly: true %>
+
 
     <div class="field">
       <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, value: @user.email, class: "testo" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, value: @user.email, class: "testo", readonly: true %>
     </div>
 
     <div class="field">
@@ -129,6 +109,10 @@
       <%= f.submit "Sign up" %>
     </div>
 
-    <%= render "devise/shared/links" %>
+    <div class="actions" style="margin-bottom: 10px; margin-top: 0px;">
+        <%= link_to "Log in", new_session_path(resource_name) %>
+    </div>
+
+    <!--<%= render "devise/shared/links" %>-->
   </div>
 <% end %>

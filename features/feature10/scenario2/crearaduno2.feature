@@ -6,7 +6,7 @@ Feature:  Crea Raduno da Artista:
                     Scenario: Creazione di un nuovo raduno con fallimento
                         Given mi autentico come Artista
                         When clicco "Crea Raduno"
-                        Then mi aspetto di essere sulla pagina di creazione del un nuovo raduno
+                        Then mi aspetto di essere sulla pagina di creazione del nuovo raduno
                         When inserisco le informazioni errate del raduno
                         And creo il raduno con "Crea Raduno"
                         Then vedo l'errore "Data - inserisci una data valida"

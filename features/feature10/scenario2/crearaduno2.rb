@@ -17,7 +17,7 @@ Given("mi autentico come Artista") do
     click_link button_text
   end
   
-  Then("mi aspetto di essere sulla pagina di creazione del un nuovo raduno") do
+  Then("mi aspetto di essere sulla pagina di creazione del nuovo raduno") do
     expect(current_path).to eq(new_raduno_path)
   end
   

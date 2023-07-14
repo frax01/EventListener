@@ -1,8 +1,16 @@
 # Scenario 2
 Given("un Artista entra nel sito e crea tre raduni") do
-    @raduno1=Raduno.create!(descrizione: "foto con i fan", data: "30/07/2023", orario: "23:30", luogo: "Via del corso, Roma", email: "francescomartignoni1@gmail.com")
-    @raduno2=Raduno.create!(descrizione: "video nuovo album", data: "10/09/2023", orario: "22:30", luogo: "Piazza del Popolo, Roma", email: "francescomartignoni1@gmail.com")
-    @raduno3=Raduno.create!(descrizione: "canzoni inedite", data: "21/07/2023", orario: "21:00", luogo: "Piazza di Spagna, Roma", email: "francescomartignoni1@gmail.com")
+    @user=User.create(
+      name: 'Francesco',
+      uid: 'frax',
+      email: 'francescomartignoni@gmail.com',
+      password: 'Patatine9!',
+      status: 'Fan',
+      is_artist: true
+    )
+    @raduno1=Raduno.create!(descrizione: "foto con i fan", data: "30/07/2023", orario: "23:30", luogo: "Via del corso, Roma", email: "francescomartignoni1@gmail.com", user_id: 1, nome_darte_organizzatore: "frax")
+    @raduno2=Raduno.create!(descrizione: "video nuovo album", data: "10/09/2023", orario: "22:30", luogo: "Piazza del Popolo, Roma", email: "francescomartignoni1@gmail.com", user_id: 1, nome_darte_organizzatore: "frax")
+    @raduno3=Raduno.create!(descrizione: "canzoni inedite", data: "21/07/2023", orario: "21:00", luogo: "Piazza di Spagna, Roma", email: "francescomartignoni1@gmail.com", user_id: 1, nome_darte_organizzatore: "frax")
   end
   
   When("entro nel sito da Fan") do
@@ -10,7 +18,8 @@ Given("un Artista entra nel sito e crea tre raduni") do
       name: 'Francesco',
       email: 'francesco@gmail.com',
       password: 'Patatine9!',
-      status: 'Fan'
+      status: 'Fan',
+      artist0: 'frax'
     )
     visit '/users/sign_in'
     fill_in 'Email', with: @user.email
@@ -38,14 +47,14 @@ Given("un Artista entra nel sito e crea tre raduni") do
   end  
 
   And("vedo il raduno a cui partecipo") do
-    expect(page).to have_content("Artista:#{@raduno.nome_darte_organizzatore}")
+    expect(page).to have_content("Artista: #{@raduno.nome_darte_organizzatore}")
     expect(page).to have_content("Descrizione: #{@raduno.descrizione}")
     expect(page).to have_content("Data: #{@raduno.data}")
     expect(page).to have_content("Orario: #{@raduno.orario.strftime("%H:%M")}")
     expect(page).to have_content("Luogo: #{@raduno.luogo}")
   end
 
-  And("provo ad iscrivermi di nuovo cliccando su Partecipa allo stesso Raduno con descrizione {string}") do |descrizione_raduno|
+  And("provo ad iscrivermi di nuovo allo stesso Raduno con descrizione {string}") do |descrizione_raduno|
     link=find("#partecipa_#{@raduno.id}")
     link.click
   end

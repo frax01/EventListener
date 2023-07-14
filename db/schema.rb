@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_14_063655) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_14_115707) do
   create_table "events", force: :cascade do |t|
     t.integer "id_raduno"
     t.string "email_partecipante"
@@ -58,11 +58,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_14_063655) do
     t.string "image2"
     t.string "image3"
     t.string "image4"
-    t.string "image5"
-    t.string "image6"
-    t.string "image7"
-    t.string "image8"
-    t.string "image9"
     t.boolean "is_artist", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

@@ -3,7 +3,7 @@ Feature:  Crea Raduno da Artista:
                 Quando si clicca sulla sezione apposita per creare il Raduno si apre un form con le informazioni da inserire
 
                     #3
-                    Scenario: Creazione di un nuovo raduno da Listener -> Fallimento
+                    Scenario: Creazione di un nuovo raduno da Listener con fallimento
                         Given mi autentico come Listener
                         When vado su "Crea Raduno"
                         Then mi aspetto di restare sulla homepage

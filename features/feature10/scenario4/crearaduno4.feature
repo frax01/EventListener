@@ -3,7 +3,7 @@ Feature:  Crea Raduno da Artista:
                 Quando si clicca sulla sezione apposita per creare il Raduno si apre un form con le informazioni da inserire
 
                     #4
-                    Scenario: Creazione di un nuovo raduno da Fan -> Fallimento
+                    Scenario: Creazione di un nuovo raduno da Fan con fallimento
                         Given mi autentico come Fan
                         When click on "Crea Raduno"
                         Then resto sulla homepage

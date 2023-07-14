@@ -34,6 +34,10 @@
         <%= f.submit "Log in" %>
       </div>
 
-      <%= render "devise/shared/links" %>
+      <div class="actions" style="margin-bottom: 10px; margin-top: 0px;">
+        <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+      </div>
+
+      <!--<%= render "devise/shared/links" %>-->
   </div>
 <% end %>

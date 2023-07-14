@@ -57,17 +57,16 @@
     <header>
         <div class="grid-containerh">
             <div class="grid-itemh">
-              <div class="profilo">
-                <img src="<%= @user.image %>">
-                <span>Ciao <%= @user.uid %></span>
-              </div>
-
+                <div class="profilo">
+                    <img src="<%= @user.image %>">
+                    <span>Ciao <%= @user.uid %></span>
+                </div>
             </div>
             <div class="grid-itemh">
                 <div class="titolo">Event Listener</div>
             </div>
             <div class="grid-itemh" id="num3">
-                <% if current_user.status=='Artista' %>
+                <% if current_user.is_artist==true %>
                     <%= link_to 'Crea Raduno', new_raduno_path, class: 'funzioni-btn' %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <% else %>
                     <%= link_to 'Crea Raduno', new_raduno_path, class: 'disabled-link' %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -77,21 +76,25 @@
                 <% end %>
             </div>
         </div>
-
     </header>
 
     <div class="grid-container" id="colonne">
         <div class="grid-item">
             <div class="intestazione">Fan di</div>
-            <% if current_user.status != "Listener" %>
+            <% if current_user.status!="Listener" %>
                 <% user = User.find_by(email: current_user.email) %>
-                <% (0..4).each do |i| %>
-                    <% artist_field = "artist#{i}" %>
-                    <% artist_value = user.send(artist_field) %>
-                    <% if artist_value!=nil %>
-                        <div class="box" id="fan">
-                            <p><%= artist_value %></p>
-                        </div>
+                <% for i in 0..(@fan.length - 1) %>
+                    <% if @fan[i]!=nil %>
+                        <% if @image[i]!=nil %>
+                            <div class="box" id="fan">
+                                <img src="<%= @image[i] %>">
+                                <p><%= @fan[i] %></p>
+                            </div>
+                        <% else %>
+                            <div class="box" id="fan">
+                                <p><%= @fan[i] %></p>
+                            </div>
+                        <% end %>
                     <% else %>
                         <% next %>
                     <% end %>
@@ -105,12 +108,6 @@
         <div class="grid-item">
             <div class="intestazione">Raduni</div>
             <% user = User.find_by(email: current_user.email) %>
-            <!--<% user.update(status: "Artista") %>
-            <% user.update(artist0: "Francesco") %>
-            <% user.update(artist1: "Marco") %>
-            <% user.update(artist2: "Giovanni") %>
-            <% user.update(artist3: "Simone") %>
-            <% user.update(artist4: nil) %>-->
             <% if Raduno.any? %>
                 <% artists_array = [] %>
                 <% (0..4).each do |i| %>
@@ -137,6 +134,8 @@
                                         <!--<%= link_to 'Partecipa', new_raduno_path, class: 'disabled-link', id: 'partecipa_'+raduno.id.to_s %>-->
                                         <button class="funzioni-btn" id="partecipa_<%= raduno.id %>" disabled>Partecipa</button>
                                     <% else %>
+                                        <!--<button class="funzioni-btn" id="partecipa_<%= raduno.id %>" onclick="window.location.href='<%= new_event_path(id_raduno: raduno.id) %>'">Partecipa</button>-->
+                                        <!--<button class="funzioni-btn" id="partecipa_<%= raduno.id %>">Partecipa</button>-->
                                         <%= link_to 'Partecipa', new_event_path(id_raduno: raduno.id), class: 'funzioni-btn', id: 'partecipa_'+raduno.id.to_s %>
                                     <% end %>
                                 </div>
@@ -182,7 +181,7 @@
             </div>
             <div class="grid-item" id="elem2">
                 <div class="intestazione">Raduni creati</div>
-                <% if current_user.status=="Artista" %>
+                <% if current_user.is_artist==true %>
                     <% if Raduno.exists?(email: current_user.email) %>
                         <% Raduno.all.each do |raduno| %>
                             <% if raduno.email == current_user.email %>
