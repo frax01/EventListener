@@ -41,8 +41,8 @@
                 if (response.ok) {
                     window.location.reload();
                         <% User.all.each do |user| %>
-                          <% if user.event.exist?(raduno_id: radunoId %>
-                            <% EventMailer.update().deliver_later %>
+                          <% if user.event.exist?(raduno_id: radunoId) %>
+                            <% EventMailer.update(user,user.event).deliver_later %>
                           <% end %>
                         <% end %>
                 } 

@@ -1,4 +1,4 @@
 Event#update
 
-  Ciao <%# @user.name%>, ti avvisiamo che <%# @event.owner %> ha modificato le informazioni riguardo l'evento <%# @event.name %>
+  Ciao <%= @user ? @user.name : 'Nome User ignoto' %>, ti avvisiamo che <%= @event ? @event.owner : 'Organizzatore Raduno ignoto' %> ha modificato o eliminato l'evento a cui partecipavi.
   Ti invitiamo a controllare le modifiche accedento al sito.
