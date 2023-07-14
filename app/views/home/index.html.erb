@@ -40,6 +40,11 @@
             .then(response => {
                 if (response.ok) {
                     window.location.reload();
+                        <% User.all.each do |user| %>
+                          <% if user.event.exist?(raduno_id: radunoId %>
+                            <% EventMailer.update().deliver_later %>
+                          <% end %>
+                        <% end %>
                 } 
                 else {
                     console.error("Errore durante l'eliminazione del raduno");

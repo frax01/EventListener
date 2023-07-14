@@ -17,10 +17,9 @@ class EventMailer < ApplicationMailer
   # call registration mail in this way:
   # EventMailer.with(user: user, event: @event).update.deliver_later
   #
-  def update
-    @user = params[:user]
-    @event = params[:event]
-    @greeting = "Hi"
+  def update(user, raduno)
+    @user = user
+    @event = raduno
 
     mail to: @user.email
   end
