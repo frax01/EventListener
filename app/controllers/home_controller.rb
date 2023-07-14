@@ -10,6 +10,5 @@ class HomeController < ApplicationController
     elsif !@user.uid.nil? && @fan!=nil
       @user.update(status: "Fan")
     end
-
   end
 end

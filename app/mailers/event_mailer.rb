@@ -1,0 +1,27 @@
+class EventMailer < ApplicationMailer
+
+  # Mail to send to current participants
+  #
+  # call registration mail in this way:
+  # EventMailer.with(user: current_user,event: @event).registration.deliver_later
+  #
+  def registration
+    @user = params[:user]
+    @event = params[:event]
+
+    mail to: @user.email
+  end
+
+  # Mailer to send to all event participants
+  #
+  # call registration mail in this way:
+  # EventMailer.with(user: user, event: @event).update.deliver_later
+  #
+  def update
+    @user = params[:user]
+    @event = params[:event]
+    @greeting = "Hi"
+
+    mail to: @user.email
+  end
+end
