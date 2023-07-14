@@ -58,8 +58,12 @@
         <div class="grid-containerh">
             <div class="grid-itemh">
                 <div class="profilo">
-                    <img src="<%= @user.image %>">
-                    <span>Ciao <%= @user.uid %></span>
+                    <% if @user.image!=nil %>
+                        <img src="<%= @user.image %>">
+                        <span>Ciao <%= @user.uid %></span>
+                    <% else %>
+                        <span>Ciao <%= @user.uid %></span>
+                    <% end %>
                 </div>
             </div>
             <div class="grid-itemh">

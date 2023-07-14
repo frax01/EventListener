@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     get "/users/auth/spotify/callback", to: "devise/omniauth_callbacks#spotify"
   end
 
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :users
   resources :radunos
   resources :events
