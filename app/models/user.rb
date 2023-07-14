@@ -46,6 +46,8 @@ class User < ApplicationRecord
         puts "\033[35m#{user.uid} #{user.provider} #{user.email} #{user.name}\033[0m"
         # RSpotify stuff testing
         if r_data = session["rspotify.top_artist"]
+          puts "\033[35m ENTRY RSPOTIFY SECTION!\033[0m"
+          puts "\n#{r_data}\n"
           # lazy implementation, array not avaible on sql lite
           @user.artist0 = r_data.at(0).name
           @user.artist1 = r_data.at(1).name
