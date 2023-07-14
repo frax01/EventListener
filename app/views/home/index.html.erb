@@ -105,12 +105,12 @@
         <div class="grid-item">
             <div class="intestazione">Raduni</div>
             <% user = User.find_by(email: current_user.email) %>
-            <% user.update(status: "Artista") %>
+            <!--<% user.update(status: "Artista") %>
             <% user.update(artist0: "Francesco") %>
             <% user.update(artist1: "Marco") %>
             <% user.update(artist2: "Giovanni") %>
             <% user.update(artist3: "Simone") %>
-            <% user.update(artist4: nil) %>
+            <% user.update(artist4: nil) %>-->
             <% if Raduno.any? %>
                 <% artists_array = [] %>
                 <% (0..4).each do |i| %>

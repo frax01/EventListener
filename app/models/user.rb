@@ -43,9 +43,11 @@ class User < ApplicationRecord
   def self.new_with_session(params, session)
     puts "\033[43;30mnew_with_session\033[0m"
     super.tap do |user|
+      puts 'riesco ad entrare-------------'
       if data = session["devise.spotify_data"] #&& session["devise.spotify_data"]["raw_info"]#["extra"]  #this is strictly removed by caller function
         puts "\033[31m#{data}\033[0m"
         puts "#{data["info"]}"
+        puts "----------sono qui----------------"
         user.email = data["info"]["email"] if user.email.blank?
         user.uid = data["uid"]
         user.provider = data["provider"]
