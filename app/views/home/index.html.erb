@@ -40,6 +40,13 @@
             .then(response => {
                 if (response.ok) {
                     window.location.reload();
+                    /*un Artista non appena eliminato un raduno fa questo*/
+                    /*L'applicazione non appena un Raduno viene cancellato manda un messaggio(mail broadcast) a tutti gli iscritti con la cancellazione del Raduno*/
+                    /*Ci dispiace il raduno con id=radunoId è stato annullato*/
+                    /*per prendere tutti gli utenti a cui mandare la mail bisogna:*/
+                    /*prendere tutti gli eventi*/
+                    /*da questi bisogna fare un controllo per andare a vedere tutti quelli che hanno event.raduno_id=radunoId*/
+                    /*Da ogni di questi si prende l'email_partecipante*/
                 } 
                 else {
                     console.error("Errore durante l'eliminazione del raduno");
