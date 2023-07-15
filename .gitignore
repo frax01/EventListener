@@ -35,7 +35,7 @@
 /config/master.key
 
 # Ignore application configuration
-#/config/application.yml
+/config/application.yml
 
 # Ignore editors and tool associated
 *~
@@ -46,7 +46,7 @@
 .vscode
 
 # Ignore application configuration
-#/config/application.yml
+/config/application.yml
 
 # Ignore private spotify id and spotify secret
 /config/local_env.yml
