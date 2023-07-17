@@ -84,6 +84,13 @@ class RadunosController < ApplicationController
 
   # DELETE /radunos/1 or /radunos/1.json
   def destroy
+    Event.all.each do |e|
+      if e.raduno_id == @raduno.id  #event linked to raduno to destroy
+        @user = User.find(e.user_id)
+        EventMailer.deletion(@user, @raduno).deliver_now
+        e.destroy #calling a destroy on unrequired object
+      end
+    end
     @raduno.destroy
 
     respond_to do |format|
