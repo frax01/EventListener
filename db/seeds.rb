@@ -347,7 +347,7 @@ more_users = [
       data: '30/07/2023',
       orario: '20:30',
       luogo: 'Via del Corso, Roma',
-      email: 'tedua@example.com',
+      email: 'BLANCO@example.com',
       user_id: 22
     },
     {
