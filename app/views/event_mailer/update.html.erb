@@ -1,6 +1,7 @@
 <h1>Event#update</h1>
 
 <p>
-  Ciao <%# @user ? @user.name : 'nome user ignoto'%>, ti avvisiamo che <%# @event ? @event.owner : 'organizzatore evento ignoto' %> ha modificato le informazioni riguardo l'evento <%# @event ? @event.name : 'nome evento ignoto' %>.<br>
-  Ti invitiamo a controllare le modifiche accedento al sito.
+Ciao <%= @user ? @user.name : 'Nome User ignoto' %>!
+Ti avvisiamo che <%= @raduno ? @raduno.nome_darte_organizzatore : 'Organizzatore Raduno ignoto' %> ha modificato o eliminato l'evento del <%= @raduno ? @raduno.data : 'Data Raduno ignoto' %> locato in <%= @raduno ? @raduno.luogo : 'Luogo Raduno ignoto' %> a cui partecipavi.
+  Ti invitiamo a controllare le modifiche accedendo al sito.
 </p>

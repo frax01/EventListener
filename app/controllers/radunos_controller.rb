@@ -60,6 +60,19 @@ class RadunosController < ApplicationController
   def update
     respond_to do |format|
       if @raduno.update(raduno_params)
+        # invoke mailer for each event subscribe
+        puts "--- attributi Raduno: #{@raduno.attributes.keys}---"
+        if Event.count > 0
+          puts "--- attributi Event: #{Event.first.attributes.keys}---"
+          Event.all.each do |e|
+            # puts "--- attributi Event: #{e.attributes.values} --- #{@raduno.attributes.values} ---" # raduno.id == id.raduno
+            if e.id_raduno == @raduno.id
+              user = User.find(e.user_id)
+              EventMailer.update(user,@raduno).deliver_later
+              puts "---#{e.email_partecipante}---"
+            end
+          end
+        end
         format.html { redirect_to '/home#index', notice: "Raduno was successfully updated." }
         format.json { render :show, status: :ok, location: @raduno }
       else

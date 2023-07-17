@@ -7,7 +7,7 @@ class EventMailer < ApplicationMailer
   #
   def registration(user, raduno)
     @user = user
-    @event = raduno
+    @raduno = raduno
 
     mail to: @user.email
   end
@@ -19,7 +19,7 @@ class EventMailer < ApplicationMailer
   #
   def update(user, raduno)
     @user = user
-    @event = raduno
+    @raduno = raduno
 
     mail to: @user.email
   end
