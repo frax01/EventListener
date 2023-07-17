@@ -28,6 +28,8 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
+        # implementing confirmation subscription to an event
+        EventMailer.registration(current_user, @raduno).deliver_later
         format.html { redirect_to '/home#index', notice: "Event was successfully created." }
         format.json { render :show, status: :created, location: @event }
       else
