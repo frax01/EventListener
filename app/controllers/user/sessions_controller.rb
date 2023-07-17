@@ -5,13 +5,11 @@ class User::SessionsController < Devise::SessionsController
 
   # GET /resource/sign_in
   def new
-    puts "user-session-controller/new"
     super
   end
 
   # POST /resource/sign_in
   def create
-    puts "user-session-controller/create"
     super
   end
 

@@ -33,8 +33,6 @@ class RadunosController < ApplicationController
   def create
     @raduno=Raduno.new(raduno_params)
     @raduno.user = current_user
-    puts "Utente corrente: #{current_user}"
-    puts "Utente del raduno: #{@raduno.user}"
     @raduno.email=current_user.email
 
     respond_to do |format|

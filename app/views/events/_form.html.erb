@@ -30,7 +30,7 @@
     </div>
 
     <br>
-    <div style="font-size: 20px; font-weight: bold;">Iscrivendoti confermi di voler ricevere notifiche sul Raduno stesso</div>
+    <div style="font-size: 20px; font-weight: bold;">Iscrivendoti accetti di voler ricevere una mail di conferma</div>
     <div style="cursor: pointer;">
       <%= form.submit 'Iscriviti', class: "bottone" %>
       <% EventMailer.registration(@user,event.raduno).deliver_later %>
