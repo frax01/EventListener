@@ -160,7 +160,7 @@
         <div class="grid-container" id="righe">
             <div class="grid-item" id="elem1">
                 <div class="intestazione">Raduni a cui partecipi</div>
-                <% if Event.any? && Raduno.any? %>
+                <% if Event.where(email_partecipante: current_user.email).any? && Raduno.any? %>
                     <% Event.all.each do |evento| %>
                         <% if current_user.email==evento.email_partecipante %>
                             <% raduno = Raduno.find(evento.id_raduno) %>

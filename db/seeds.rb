@@ -321,6 +321,34 @@ more_users = [
     artist3: 'Dua Lipa',
     artist4: 'Kendrick Lamar',
     is_artist: true #22
+  },
+  {
+    email: 'salmo@example.com',
+    password: 'Password1!',
+    provider: 'spotify',
+    uid: 'Salmo',
+    status: 'Fan',
+    name: 'Luca',
+    artist0: 'Ligabue',
+    artist1: 'Selena Gomez',
+    artist2: 'Drake',
+    artist3: 'Dua Lipa',
+    artist4: 'Kendrick Lamar',
+    is_artist: true #23
+  },
+  {
+    email: 'lazza@example.com',
+    password: 'Password1!',
+    provider: 'spotify',
+    uid: 'Lazza',
+    status: 'Fan',
+    name: 'Francesco',
+    artist0: 'Ligabue',
+    artist1: 'Selena Gomez',
+    artist2: 'Drake',
+    artist3: 'Dua Lipa',
+    artist4: 'Kendrick Lamar',
+    is_artist: true #24
   }
 ]
   
@@ -332,6 +360,24 @@ more_users = [
   end
 
   more_radunos = [
+    {
+      nome_darte_organizzatore: 'Salmo',
+      descrizione: 'video nuova canzone',
+      data: '20/07/2023',
+      orario: '20:30',
+      luogo: 'Via del Babbuino, Roma',
+      email: 'salmo@example.com',
+      user_id: 23
+    },
+    {
+      nome_darte_organizzatore: 'Lazza',
+      descrizione: 'video nuovo album',
+      data: '25/07/2023',
+      orario: '20:30',
+      luogo: 'Via del Corso, Roma',
+      email: 'lazza@example.com',
+      user_id: 24
+    },
     {
       nome_darte_organizzatore: 'Tedua',
       descrizione: 'video nuovo album',
