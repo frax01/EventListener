@@ -14,7 +14,7 @@ class User::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
       # RSpotify stuff testing
       r_user = RSpotify::User.new(request.env["omniauth.auth"])
-      r_top_artists = r_user.top_artists(limit: 5, time_range: "long_term")
+      r_top_artists = r_user.top_artists(limit: 40, time_range: "long_term")
       # CREATE CUSTOM HASHES
       custom_hash = Hash[
         "uid" => request.env["omniauth.auth"]["uid"],

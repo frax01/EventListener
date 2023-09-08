@@ -1,7 +1,10 @@
-<h1>Event#update</h1>
+<h1>Modifica evento</h1>
 
-<p>
-Ciao <%= @user ? @user.name : 'Nome User ignoto' %>!
-Ti avvisiamo che <%= @raduno ? @raduno.nome_darte_organizzatore : 'Organizzatore Raduno ignoto' %> ha modificato l'evento del <%= @raduno ? @raduno.data : 'Data Raduno ignoto' %> locato in <%= @raduno ? @raduno.luogo : 'Luogo Raduno ignoto' %> a cui partecipavi.
-  Ti invitiamo a controllare le modifiche accedendo al sito.
-</p>
+<p> Ciao <%= @user ? @user.name : 'Nome User ignoto' %>! </p>
+<p> Ti avvisiamo che <%= @raduno ? @raduno.nome_darte_organizzatore : 'Organizzatore Raduno ignoto' %> ha modificato l'evento a cui eri precedentemente iscritto. </p>
+<p> Ecco i nuovi dati: </p>
+<p> Descrizione: <%= @raduno ? @raduno.descrizione : 'Descrizione Raduno ignoto' %>, </p>
+<p> Luogo: <%= @raduno ? @raduno.luogo : 'Luogo Raduno ignoto' %>, </p>
+<p> Data: <%= @raduno ? @raduno.data : 'Data Raduno ignoto' %>, </p>
+<p> Orario: <%= @raduno ? @raduno.orario.strftime("%H:%M") : 'Orario Raduno ignoto'%>. </p>
+<p> Mi raccomando, non mancare! </p>
